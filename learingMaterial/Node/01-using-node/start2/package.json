@@ -1,0 +1,17 @@
+{
+  "name": "stam",
+  "version": "0.0.1",
+  "description": "the best app ever",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app",
+    "prod": "node app"
+  },
+  "author": "Tal Yaron",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "string": "^3.3.3"
+  }
+}

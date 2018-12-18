@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bubbeling</title>
+</head>
+<style>
+    div {
+        border: 1px solid palevioletred;
+        padding: 20px;
+    }
+
+    p {
+        border: 1px solid blue;
+    }
+</style>
+
+<body>
+    <div onclick="clicked(event)" id='wrapper'>
+        Wrapper
+        <div onclick="event.stopPropagation()">
+            Master
+            <div onclick="clicked(event)" id='first'>
+                fisrtFun
+                <div onclick="clicked(event)" id='second'>
+                    secondFun
+                    <p id='pargraph' onclick="clicked(event)">parFun</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- onclick="event.stopPropagation()" -->
+</body>
+<script>
+    function clicked(elem) {
+        console.log(elem)
+
+    }
+
+</script>
+
+</html>

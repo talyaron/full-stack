@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <button id='button'>OK</button>  
+</body>
+</html>
+<style> 
+
+</style>
+<script>
+  
+  var button = document.getElementById('button');
+  
+  button.addEventListener('click',function(e){
+    button.style.transform = 'translateX(300px)';
+  })
+  
+  button.addEventListener('mouseover',function(e){
+    button.style.transform = 'translateY(300px)';
+  })
+  
+</script>

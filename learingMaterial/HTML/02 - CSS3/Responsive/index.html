@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+  </head>
+
+  <body>
+    <main>
+      <nav>
+        <div class='title navs'>My Big Title</div>
+        <div class="navs">
+          <i class="material-icons" id='hamburger'>menu</i>
+        </div>
+      </nav> 
+    </main>
+
+  </body>
+</html>
+<style>
+  nav{
+    background: #fc95a7;
+    font-size: 1.5rem;
+    display: flex;
+  }
+
+  .title{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #hamburger{
+    float: right;
+    height: auto;
+    font-size: 48px;
+    color: white;
+  }
+
+  @media (min-width:480px){
+    #hamburger{
+      display: none;
+    }
+  }
+
+
+
+
+</style>

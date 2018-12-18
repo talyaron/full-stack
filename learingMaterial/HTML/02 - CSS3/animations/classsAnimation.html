@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div id=rect onclick="toggleColors(event)"></div>
+</body>
+
+</html>
+<style>
+    #rect {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+
+    .colors {
+
+        animation-name: colorChange;
+        animation-duration: 8s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes colorChange {
+        0% {
+            background-color: red;
+            transform: rotate(0deg);
+            box-shadow: 2px 2px 4px gray;
+        }
+        50% {
+            background-color: yellow;
+            transform: rotate(360deg);
+            box-shadow: 10px 10px 20px gray;
+        }
+        100% {
+            background-color: red;
+            transform: rotate(0deg);
+            box-shadow: 2px 2px 4px gray;
+        }
+    }
+</style>
+<script>
+    function toggleColors(event) {
+        var element = document.getElementById(event.target.id);
+        if (element.classList.contains('colors')) {
+            element.classList.remove('colors')
+        } else {
+            element.classList.add('colors')
+        }
+
+    }
+</script>

@@ -1,0 +1,38 @@
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  font-family: 'Indie Flower', cursive;
+}
+
+main{
+  background: -webkit-gradient(linear, left top, left bottom, from(#010139), to(#0000ff));background: linear-gradient(to bottom, #010139, ##0000ff);
+  color: white;
+  font-size: 2rem;
+  padding: 50px;
+
+  height: 100%;
+}
+
+input{
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 1.3rem;
+  margin: 10px;
+  background: rgba(255, 0, 0, 0);
+  
+}
+
+.radioButton{
+  -ms-transform: scale(2); /* IE 9 */
+  -webkit-transform: scale(2); /* Chrome, Safari, Opera */
+  transform: scale(2);
+}
+
+.option{
+  font-size: 1.5rem;
+  padding: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+}

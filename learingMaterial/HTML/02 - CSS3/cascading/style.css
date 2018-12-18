@@ -1,0 +1,42 @@
+body{
+  color: green;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.secondLevel span {
+  color: aqua;
+}
+
+.secondLevel {
+  color:blueviolet
+}
+
+.thirdLevel span{
+  color:yellow
+}
+
+.fourthLevel{
+  font-size: 2rem
+}
+
+.fifthLevel {
+  color: inherit;
+}
+
+span{
+  font-weight: 700;
+}
+
+.fifthLevel span{
+  font-weight: inherit;
+  color:initial;
+}
+
+p.emphasize{
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1rem;
+}

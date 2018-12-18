@@ -1,0 +1,38 @@
+html, body{
+  height: 100%;
+}
+main{
+  position: absolute;
+  top:0px;
+  left: 0px;
+  background: pink;
+  overflow: auto;
+  width: 100%
+   
+}
+
+section{
+  background: green;
+  float: right;
+  width: 80%
+ 
+}
+
+article{
+  background: wheat;
+  padding: 10px;
+}
+
+.all{
+  
+}
+aside{
+  background: yellow;
+  float: left;
+  width: 20%;
+  height: 100%;
+  overflow: auto;
+  
+  
+    
+}

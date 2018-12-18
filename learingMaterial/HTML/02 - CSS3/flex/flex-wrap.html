@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <h1>Flex-wrap</h1>
+  <h2>flex-basis: 250px</h2>
+  <h2>container width: 1000px</h2>
+  <main>
+    <div class=one>CSS property specifies the flex basis</div>
+    <div class=two>CSS property specifies the flex basis</div> 
+    <div class=one>CSS property specifies the flex basis</div>
+    <div class=two>CSS property specifies the flex basis</div>     
+    <div class=one>CSS property specifies the flex basis</div>
+    <div class=two>CSS property specifies the flex basis</div>     
+  </main>
+  <br>
+  <main>
+    <div class=one>CSS property specifies the flex basis</div>
+    <div class=two>CSS property specifies the flex basis</div> 
+    <div class=one>CSS property specifies the flex basis</div>        
+  </main>
+</body>
+</html>
+<style>
+  
+/*  The flex-basis CSS property specifies what will be the width of an item, if there is enough space. If there isn't enough space, the itme will shrink.*/
+  
+  
+  
+  body{
+    margin: 0px;
+  }
+  main{
+    display: flex;
+    width: 100%;
+    background: green;
+    padding: 5px;
+    width: 100%;
+    flex-wrap: wrap;
+    
+    
+  }
+  
+  div{
+    flex-basis: 250px;
+  }
+  
+  .one{
+    
+    background: blue;
+  }
+  
+  .two{
+    flex-basis: min-content;
+    background: red;
+  }
+
+</style>

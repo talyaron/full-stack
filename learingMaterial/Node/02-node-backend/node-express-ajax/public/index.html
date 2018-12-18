@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Ajax</h1>
+    <button id='get-products'>GET Products</button>
+
+    <form id='create-input-form'>
+        <input type='text' id='create-input' placeholder="Your name"/>
+        <input type='text' id='create-input-friend' placeholder="Your friends name"/>
+        <button id='create-product'>Create (POST)</button>
+    </form>
+
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                
+                <th>Friend</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        $(
+            () => {
+
+                //get product
+                $('#get-products').on('click', () => {
+                    $.ajax("/ajax",{
+                        type: 'GET',
+                        contentType: 'application/json'
+                    })
+                        .done(data => {
+                            console.dir(data)
+                            var tbody = $('tbody');
+                            tbody.html('');
+
+                            data.forEach(product => {
+                                tbody.append('<tr>' +
+                                    '<td>' + product.id + '</td>' +
+                                    '<td><input type="text" id="product' + product.id + '" value="' + product.name + '"></td>' +
+                                    '<td><input type="text" id="friend' + product.id + '"value="' + product.friend +'"</td>' +
+                                    '<td><button class="update-button" onclick="updateProduct(' + product.id + ')">UPDATE/PUT</button>' +
+                                    '<button class="delete-button" onclick="deleteProduct(' + product.id + ')">DELETE</button>' +
+                                    '</td>' +
+                                    '</tr >')
+                            })
+                        })
+                        .fail((jqXHR, textStatus, error) => {
+                            console.log(jqXHR, textStatus, error)
+                        })
+
+                })
+
+                const createDataInput = $('#create-input');
+                const createFriendInput = $('#create-input-friend');
+                //create (POST) product
+                $('#create-input-form').on('submit', (event) => {
+
+                    event.preventDefault();
+                    $.ajax('/ajax',{
+                        type: 'POST',
+
+                        contentType: 'application/json',
+                        data: JSON.stringify({ name: createDataInput.val(), friend: createFriendInput.val() }),
+                        success: (res) => {
+                            createFriendInput.val('');
+                            createDataInput.val('');
+                            $('#get-products').click();
+                        }
+                    })
+                })
+            }
+        )
+
+    </script>
+    <script>
+        //update PUT
+        function updateProduct(id) {
+            let newName = $('#product' + id).val();
+            let newFriend = $('#friend' + id).val();
+
+            $.ajax('/ajax/' + id,{
+               
+                method: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify({ name: newName, friend: newFriend }),
+                success: (res) => {
+
+                    console.log(res);
+                    $('#get-products').click();
+                }
+
+            })
+        }
+
+        function deleteProduct(id) {
+          
+            $.ajax('/ajax/'+id,{
+                method: 'DELETE',
+                contentType: 'application/json',
+                success: (res) => {
+                    console.log(res);
+                    $('#get-products').click();
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

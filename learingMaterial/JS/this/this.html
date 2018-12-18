@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>This</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    //this is the scope of the current object
+    //in most cases, this refers to Window
+    //if inside an object it will refer to the object
+
+    console.log('window scope this:')
+    console.dir(this)
+    function testThis(x) {
+        console.log('testThis function scope this:', x);
+        console.dir(this)
+        function testInnerThis() {
+            console.log('testThis function2 scope this:', x);
+            console.dir(this)
+        }
+        testInnerThis();
+
+    }
+    var obj = {
+        sayThis: function () {
+            console.log('say this')
+            console.dir(this);
+        }
+
+    }
+
+    testThis(4);
+    obj.sayThis();
+</script>
+
+</html>

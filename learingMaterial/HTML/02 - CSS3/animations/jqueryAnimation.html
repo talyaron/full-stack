@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velocity</title>
+    <script src="jquerySlim.js"></script>
+    <script src="velocity.js"></script>
+  </head>
+
+  <body>
+    <div id=one onclick="setVelocity()">One</div>
+    <div id=two>Two</div>
+
+  </body>
+</html>
+<style>
+  #one{
+    position: relative;
+    top:1%;
+    opacity: 0.5;
+    width: 300px;
+    height: 300px;
+    background:#1deb1d;
+  }
+  #two{
+    width: 300px;
+    height: 300px;
+    background:#e31deb;
+  }
+</style>
+<script>
+  function setVelocity(){
+    /* Animate down to zero then set display to "none". */
+//    $("#one").velocity("slideUp",{
+//      easing: 'easeOutQuart'
+//    });
+    $('#one').slideUp(1000)
+
+  }
+</script>

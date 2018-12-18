@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div class='reds'>
+            <span>cubic-bezier</span>
+        </div>
+        <div class='blues'>Linear</div>
+        <div class='greens'>Custom</div>
+        <div class='grays'>ease-in-out</div>
+    </main>
+</body>
+
+</html>
+<style>
+    main {
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    div {
+        height: 70px;
+        width: 70px;
+        margin: 20px;
+        border-radius: 50%;
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        border-right: 4px solid rgb(44, 44, 44);
+        border-bottom: 4px solid rgb(44, 44, 44);
+
+        animation-name: drop;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+    }
+
+    /* https://easings.net/ */
+
+    .reds {
+        background: red;
+
+        animation-timing-function: cubic-bezier();
+
+    }
+
+    .blues {
+        background: blue;
+
+        animation-timing-function: linear;
+
+    }
+
+    .greens {
+        background: green;
+
+        animation-timing-function: cubic-bezier(.32, -0.49, .68, 1.6);
+
+    }
+
+    .grays {
+        background: rgb(63, 63, 63);
+
+        animation-timing-function: ease-in-out;
+
+
+    }
+
+    @keyframes drop {
+        from {
+            transform: translateY(0px);
+            box-shadow: 40px 40px 80px gray;
+
+        }
+
+        to {
+            transform: translateY(400px);
+            box-shadow: 2px 2px 4px gray;
+
+        }
+    }
+</style>

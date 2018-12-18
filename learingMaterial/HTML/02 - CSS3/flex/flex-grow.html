@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <main>
+    <div id=one>one</div>
+    <div id=two>two</div>      
+  </main>
+</body>
+</html>
+<style>
+  
+/*  The flex-grow CSS property specifies the flex grow factor of a flex item. It specifies what amount of space inside the flex container the item should take up. The flex grow factor of a flex item is relative to the size of the other children in the flex-container.*/
+  
+  main{
+    display: flex;
+    width: 100%;
+    background: green;
+    padding: 5px;
+    
+  }
+  
+  #one{
+    flex-grow: 1;
+    background: blue;
+  }
+  
+  #two{
+    flex-grow: 2;
+    background: red;
+  }
+
+</style>

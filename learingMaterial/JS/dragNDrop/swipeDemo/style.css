@@ -1,0 +1,85 @@
+body{
+overflow-y: hidden;
+
+position: absolute;
+overflow-y: hidden;
+
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+header{
+  height: auto;
+  width: 100%;
+  font-size: 2rem;
+  color: white;
+  font-weight: 700;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  top:0px;
+  left: 0px;
+  z-index: 10;
+  background: #9839a0;
+  box-shadow: 0px 8px 16px rgba(85, 85, 85, 0.56); 
+}
+
+main{
+  /* display: flex;
+  flex-direction: column; */
+  margin: 0px;
+  margin-top: 45px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.rows{
+  background: red;
+  margin: 0px;
+  width: 95.5vw;
+  
+}
+
+
+
+
+.card {
+  position: relative;    
+  width: 100%;
+  /* height: 200px; */
+
+  background: white;  
+  border-bottom: 1px solid rgb(228, 228, 228);
+  border-left: 1px solid rgb(228, 228, 228);
+  border-right: 1px solid rgb(228, 228, 228);
+  /* box-shadow: 4px 4px 8px gray; */
+  font-size: 2rem;
+  padding: 10px;
+  
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */ 
+
+ 
+  
+}
+
+.card h3{
+  color: rgb(68, 68, 68);
+  margin-bottom: 0px;
+  margin-top:0px;
+}
+
+.card div{
+  color: rgb(87, 87, 87);
+  font-size: 1.5rem;
+}
+
+.draggable,.draggable *{
+   /* solve a problem with chrome-mobile touch drag */
+  -ms-touch-action: none;
+  touch-action: none;
+}

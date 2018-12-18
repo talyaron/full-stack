@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <title>Browser Events</title>
+  </head>
+
+  <body>
+    <main>
+      <button>OK</button>
+      <div class="buttons">
+      <div class="largeButton" id='firstButton'>
+        Click Me :-)
+      </div>
+
+      <div class="largeButton" id='secondButton' onclick="changeMyColor()" ondblclick="rotate()">Change My Color</div><br>
+        
+      </div>
+
+      <!--  good source for events can be found at: https://www.w3schools.com/jsref/dom_obj_event.asp -->
+      <form>
+        <input type='text' class="inputText" id='inputName' placeholder="Enter some text" autofocus><br>
+        <input type='button' value='OK' class="buttonOK" id='inputNameSubmit'>
+      </form><br>
+      <div id='output'></div>
+    </main>
+
+  </body>
+</html>
+<script src='click.js'></script>
+<link rel=stylesheet href="style.css">

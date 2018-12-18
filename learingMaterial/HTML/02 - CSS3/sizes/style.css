@@ -1,0 +1,12 @@
+html{
+  font-size:3vw;
+}
+div{
+  font-size: 1rem;
+}
+
+@media only screen and (max-width:600px){
+  div{
+    font-size: 2rem;
+  }
+}

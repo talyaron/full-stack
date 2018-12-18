@@ -1,0 +1,15 @@
+html, body {
+    margin: 0px;
+    width: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+}
+
+.post {
+    padding: 10px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}

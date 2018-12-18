@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Positioning</title>
+
+    <style>
+        .regularDivs {
+            width: 100px;
+            height: 100px;
+        }
+
+        .simplePosition {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background: red;
+
+        }
+
+
+
+        #secondDiv {
+            background: blue;
+        }
+
+        /* .wrapper {
+            position: absolute;
+            top: 150px;
+            left: 200px;
+            border: 1px dashed black;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class='wrapper'>
+        <div class="simplePosition regularDivs">Hi</div>
+    </div>
+    <div id='secondDiv' class="regularDivs">Boo</div>
+</body>
+
+</html>

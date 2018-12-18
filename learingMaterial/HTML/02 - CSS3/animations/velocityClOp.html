@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velocity</title>
+    <script src="jquerySlim.js"></script>
+    <script src="velocity.js"></script>
+    <script src="velocity.ui.js"></script>
+  </head>
+
+  <body>
+    <div id=one onclick="closeDiv()">One</div>
+    <div id=two onclick="openDiv()">Two</div>
+
+  </body>
+</html>
+<style>
+  #one{
+    position: relative;
+    top:1%;
+    opacity: 0.9;
+    width: 300px;
+    height: 300px;
+    background:#1deb1d;
+  }
+  #two{
+    width: 300px;
+    height: 300px;
+    background:#e31deb;
+  }
+</style>
+<script>
+  function closeDiv(){
+    /* Animate down to zero then set display to "none". */
+
+
+
+    $('#one').velocity(
+      { height: ['0px', '300px'], fontSize:'1px',  transform: "rotate(720deg)" },
+      {duration: 1000,
+       ease:'spring', 
+       complete: function(elements) { $('#one').hide() }
+      }
+    )
+  }
+  
+  function openDiv(){
+    $('#one').velocity(
+      { height: ['300px', '0px'], fontSize:'16px',  transform: "rotate(-720deg)" },
+      {duration: 1000,
+       ease:'spring', 
+       begin: function(elements) { $('#one').show() }
+      }
+    )
+  }
+</script>

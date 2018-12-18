@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  </head>
+
+  <body>
+    <main>
+      <header>The way of the forms</header>
+      <form action="index.html" method="get">
+        <input type="text" name='name'><br>
+        <input type="range" id="range" name="range" value="100" min='50' max='150'><br>
+        <fieldset>
+          <legend>Gender:</legend>          
+          <input type="radio" name="gender" value="male" checked class="radioButton"> Male<br>
+          <input type="radio" name="gender" value="female" class="radioButton"> Female<br>
+          <input type="radio" name="gender" value="other" class="radioButton"> Other<br>
+        </fieldset>
+        <select name="cars" class="option">
+          <option value="volvo" class="option">Volvo</option>
+          <option value="saab" class="option">Saab</option>
+          <option value="fiat" class="option" selected>Fiat</option>
+          <option value="audi" class="option">Audi</option>
+        </select><br>
+        <input list="browsers" name="browser">
+        <datalist id="browsers">
+          <option value="Internet Explorer">
+          <option value="Firefox">
+          <option value="Chrome">
+          <option value="Opera">
+          <option value="Safari">
+        </datalist><br>
+        
+        <input type="submit" value="Submit">
+
+      </form>
+    </main>
+
+  </body>
+</html>
+<link rel="stylesheet" href="style.css">
+<script src="forms.js"></script>

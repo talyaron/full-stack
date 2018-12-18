@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Animation</title>
+</head>
+
+<body>
+  <div id='myDiv' class='red' onclick="toggleAnimation()">Color</div>
+</body>
+<script>
+  var isActive = false;
+  var element = document.getElementById('myDiv');
+
+  function toggleAnimation() {
+    if (!isActive) {
+      element.style.left = '200px';
+      element.style.transform = 'rotate(360deg)';
+      isActive = true;
+      console.log('go to 200')
+    } else {
+      element.style.left = '0px';
+      element.style.transform = 'rotate(0deg)';
+      isActive = false;
+      console.log('go to 0')
+    }
+  }
+</script>
+
+</html>
+<style>
+  .red {
+    width: 100px;
+    height: 100px;
+    left: 0px;
+    position: relative;
+    background-color: red;
+    transition: 1s all;
+  }
+</style>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Remove</title>
+</head>
+
+<body>
+  <div id='myDiv' class='red' onclick="toggleAnimation()">Color</div>
+</body>
+<script>
+  var isActive = false;
+  var element = document.getElementById('myDiv');
+
+  function toggleAnimation() {
+    if (!isActive) {
+      element.classList.add('colors');
+      isActive = true;
+      console.log('turn on')
+    } else {
+      element.classList.remove('colors');
+      isActive = false;
+      console.log('turn off')
+    }
+  }
+</script>
+
+</html>
+<style>
+  .red {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    background-color: red;
+  }
+
+  .colors {
+    animation-name: turnRight, colorChange;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    /* animation  delay */
+    /* animation-delay: 2s; */
+    /* number of times to run */
+    /* animation-iteration-count: 5; */
+    animation-iteration-count: infinite;
+    /* from-to and reverse animation */
+    /* animation-direction: reverse; */
+    animation-direction: alternate;
+    animation-timing-function: ease-out;
+    /*  linear|ease|ease-in|ease-out|ease-in-out|step-start|step-end|steps(int,start|end)|cubic-bezier(n,n,n,n)|initial|inherit; */
+
+
+  }
+
+  @keyframes colorChange {
+    0% {
+      background-color: red;
+    }
+
+    50% {
+      background-color: yellow;
+    }
+
+    100% {
+      background-color: red;
+    }
+  }
+
+  @keyframes blues {
+    from {
+      background-color: blue;
+    }
+
+    to {
+      background-color: lightcyan;
+    }
+  }
+
+  @keyframes turnRight {
+    from {
+      transform: rotate(0deg);
+      left: 0px;
+    }
+
+    to {
+      transform: rotate(360deg);
+      left: 200px;
+    }
+  }
+
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations */
+</style>

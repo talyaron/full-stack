@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+  </head>
+  <div class="floats yellow">Hi</div>
+  <div class="floats red">bye</div>
+  <div class="floats red">you</div>
+  <body>
+
+  </body>
+</html>
+<style>
+  div {
+    box-sizing: border-box;
+  }
+  
+  .floats{
+    width: 33%;
+    height: 100px;
+    
+    border:1px solid gray;
+    
+    float: left;
+    
+  }
+  
+  .yellow{
+    background: yellow;
+  }
+  
+  .red{
+    background: red;
+  }
+  
+  @media (max-width:768px){
+    .floats{
+      width:50%;
+    }
+    
+    .red{
+      background: orange;
+      
+    }
+  }
+  
+  @media (max-width:420px){
+    .floats{
+      width:100%;
+    }
+    
+    .red{
+      background: green;
+      
+    }
+    
+  }
+  
+  
+
+</style>

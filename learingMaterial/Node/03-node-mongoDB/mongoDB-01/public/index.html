@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mongo-ajax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Hi</h1>
+    <input type="button" id='get-products' value="OK">
+
+
+
+</body>
+<script>
+    $('#get-products').on('click', () => {
+        $.ajax("/api", {
+            type: 'GET',
+            contentType: 'application/json'
+        })
+            .done(data => {
+                console.dir(data)
+
+            })
+            .fail((jqXHR, textStatus, error) => {
+                console.log(jqXHR, textStatus, error)
+            })
+
+    })
+</script>
+
+</html>

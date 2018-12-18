@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <div id='myDiv'>sdfsdf</div>
+  
+</body>
+</html>
+<style>
+  #myDiv{
+    position: absolute;
+  }
+</style>
+<script>
+  var body = document.body;
+  var startX=0;
+  
+  body.addEventListener('keyup', function(e){
+    console.log(e.keyCode)
+    if (e.keyCode == 39){
+      startX += 10;
+      
+      document.getElementById('myDiv').style.left = startX+'px';
+      
+    }
+    
+    if (e.keyCode == 40){
+      document.getElementById('myDiv').style.transform = 'translateY(100px)';
+    }
+  })
+  
+
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+  </head>
+
+  <body>
+    <div id=colors>Color</div>
+    <button onclick="closeColor()">Close</button>
+  </body>
+</html>
+<style>
+  #colors{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation-name: colorChange;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  
+  .closeElement{
+    height: 0px;
+    animation-name: closeElement;
+    animation-duration: 2s;
+  }
+
+  @keyframes colorChange {
+    0% {background-color: red;}
+    50% {background-color: yellow;}
+    100% {background-color: red;}
+  }
+  
+  @keyframes closeElement{
+    from {height: 100px}
+    to {height: 0px}
+  }
+
+</style>
+<script>
+ function closeColor(){
+   console.log('close')
+   var element = document.getElementById('colors');
+   element.classList.add('closeElement')
+   
+ }
+</script>
