@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise</title>
+</head>
+
+<body>
+    <h1 id='hi'>H1</h1>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+
+
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBW4Ty8cdaUGohEbBwXkoPGe_fh_yDz5zM",
+        authDomain: "delibtests.firebaseapp.com",
+        databaseURL: "https://delibtests.firebaseio.com",
+        projectId: "delibtests",
+        storageBucket: "delibtests.appspot.com",
+        messagingSenderId: "612739213308"
+    };
+    firebase.initializeApp(config);
+    var DB = firebase.database().ref('tests');
+
+
+
+    // var hiElm = document.getElementById('hi')
+    function getPromiseFromDB() {
+        console.time('time')
+        return myPromise = new Promise((resolve, reject) => {
+
+            console.log("going to DB......")
+            DB.child('testPromise').once('value', function (testDB) {
+                console.log('Value from DB....', testDB.val())
+                var success = 'Success: Got the Value from DB';
+                var errorP = "noppppp"
+                if (testDB.val()) {
+                    resolve(success);
+                } else {
+                    reject(errorP)
+                }
+            })
+        })
+
+    }
+
+    async function asyncTest() {
+        console.log('async function async3: waiting to DB results');
+        var result = await getPromiseFromDB();
+        console.log('async function result:', result);
+        console.timeEnd('time')
+
+    }
+
+    asyncTest();
+
+    function getSumOfChildren(parent) {
+
+        return sumChildren = new Promise((resolve, reject) => {
+            DB.child(`users/${parent}/numberOfChildren`).once('value').then(numChildDB => {    
+                if (numChildDB.val()) {
+                    resolve(numChildDB.val());
+                } else {
+                    reject(0)
+                }
+            })
+        })
+    }
+
+    async function getChildrensFromDB() {
+        console.time('children');
+        let sumChildren = 0;
+        sumChildren += await getSumOfChildren('Roni');
+        sumChildren += await getSumOfChildren('moti');
+        console.log(sumChildren);
+        console.timeEnd('children')
+
+    }
+
+    getChildrensFromDB();
+
+</script>
+
+</html>

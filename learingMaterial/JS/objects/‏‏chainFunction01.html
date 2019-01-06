@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chain Functions</title>
+</head>
+<style>
+    .green {
+        background: green;
+    }
+</style>
+
+<body>
+    <div class="main"></div>
+    <script>
+        var Customer = function (name) {
+            this.firstName = name;
+            this.creditRank = '';
+            this.setCreditRank = function (creditRank) {
+                this.creditRank = creditRank;
+                return this;
+            }
+
+            this.getCreditRank = function () {
+                return this.creditRank;
+            }
+        }
+
+        Customer.prototype.setName = function (name) {
+            this.firstName = name;
+            // return this
+        };
+        Customer.prototype.getName = function () {
+            return this.firstName;
+        }
+
+
+        let Moseh = new Customer('David');
+
+        Moseh.setCreditRank("AAA");
+        console.log(Moseh.getName(), Moseh.getCreditRank());
+
+        // Moseh.setName('Rivkin').setCreditRank('aa');
+        // console.log(Moseh.getName(), Moseh.getCreditRank());
+        var x = Moseh.setName('Riki')
+        console.log(x);
+
+
+    </script>
+</body>
+
+</html>
