@@ -27,3 +27,4 @@ var poopy = new Dog('Poppy', "dogs", "medium");
 
 poopy.tellDogName();
 poopy.tellSpecies();
+console.dir(poopy)
