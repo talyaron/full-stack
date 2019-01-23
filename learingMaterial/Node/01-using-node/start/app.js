@@ -8,4 +8,3 @@ function triple(a){
 console.log(triple(x));
 
 console.log(__filename)
-debugger;
