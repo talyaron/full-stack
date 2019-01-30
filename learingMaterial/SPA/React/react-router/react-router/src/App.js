@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 import './App.css';
-import Page1 from './subPages/Page1';
-import Page2 from './subPages/Page2';
-import Page3 from './subPages/Page3';
+import Page from './subPages/Page';
+
 
 class App extends Component {
   render() {
@@ -12,6 +11,11 @@ class App extends Component {
       <Router>
         <div className='page'>
           <header>
+            <div className='menuItem'>
+              <Link to={`/`}>
+                HOME
+              </Link>
+            </div>
             <div className='menuItem'>
               <Link to={`/pages/1`}>
                 page 1
@@ -30,6 +34,7 @@ class App extends Component {
           </header>
           <div className='wrapper'>
             <h1>Hello</h1>
+            <Route exact={true} path='/' component={Home} />
             <Route path='/pages/:id' component={Page} />
           </div>
         </div>
@@ -38,11 +43,13 @@ class App extends Component {
   }
 }
 
-const Page = ({ match }) => {
-  console.dir(match)
+
+
+const Home = () => {
+  
   return (
     <div>
-      {match.params.id}
+      <h1>Home Page Welcome</h1>
     </div>
   )
 }
