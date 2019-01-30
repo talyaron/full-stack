@@ -22,6 +22,7 @@ class Pets {
 }
 
 let cat = new Pets('cat', 'small', 15, 200);
+let dog = new Pets ('dog','medium', 12, 300);
 cat.callNameNSize();
 console.log(cat.costOfFood);
 console.log(cat.calculteCostOfFood())

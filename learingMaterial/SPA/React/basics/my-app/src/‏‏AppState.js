@@ -15,8 +15,7 @@ class Welcome extends React.Component {
 
   }
   render() {
-    return <div
-      className='clickables'
+    return <div className='clickables'
       onClick={() => this.setState({ clicked: this.state.clicked + 1 })}>
       Hello {this.props.name} {this.state.clicked}
       <ClickedTimes clicked={this.state.clicked} />
@@ -28,9 +27,8 @@ class Welcome extends React.Component {
 function App() {
   return (
     <div>
-
       <Welcome name='Sara' />
-      <Welcome name='SItizk' />
+      <Welcome name='Itizk' />
       <button id='testId' onClick={(e) => { console.dir(e.target.id) }}>OK</button>
     </div>
   )
