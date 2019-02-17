@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loops</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body dir='rtl'>
+    <div id='root'></div>
+    <script>
+        let persons = [
+            { name: 'בני', last: 'בו', bestMusician: 'דודו פארוק',gender:'male' },
+            { name: 'מירי', last: 'לו', bestMusician: 'טונה',gender:'female' },
+            { name: 'מוסי', last: 'בי', bestMusician: 'מירי מסיקה',gender:'male'},
+            { name: 'מיכל', last: 'גרוסמן', bestMusician: 'שפיטה',gender:'female' },
+        ]
+
+        for (let i = 0; i < persons.length; i++) {
+            let p = persons[i];
+           
+            var node = document.createElement("div");                 // Create a <div> node
+            var textnode = document.createTextNode(`המוסיקאי האהוב על ${p.name} ${p.last} הוא/היא ${p.bestMusician}`);         // Create a text node
+            node.appendChild(textnode);                              // Append the text to <div>
+            document.getElementById("root").appendChild(node);     // Append <div> to div with id="root" 
+        }
+
+    </script>
+</body>
+
+</html>
