@@ -28,7 +28,7 @@ for (i in obj) {
   console.log(i + ':' + obj[i]);
 }
 
- i = 0;
+ let i = 0;
 
  while (i < 4) {
    i++;
@@ -43,4 +43,7 @@ for (i in obj) {
    console.log("The number is (do) " + i);
    
  } while (i < 4);
+
+
+
 

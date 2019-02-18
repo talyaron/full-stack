@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scope</title>
+</head>
+
+<body>
+    <script>
+        // var vatCalucation = function (price){
+        //     return (vat-1)*price
+        // }
+
+
+        // function taxiPay(time, pricePerTime) {
+        //     var vat = 1.17;
+        //     return (time * pricePerTime) * vat;
+        // }
+
+
+        // var price = taxiPay(5, 1.2);
+
+        // console.log(price, vatCalucation(price));
+
+        function run() {
+            for (i = 0; i < 6; i++) {
+                var xFunction = 6;
+                console.log(i + xFunction)
+            }
+        }
+
+        // run();
+        // console.log('this is xFunction:',xFunction)
+
+       
+        for (let i = 0; i < 6; i++) {
+            let x = 6;
+            console.log(i + x)
+        }
+        console.log('i:', i)
+        // console.log('this is x:', x)
+    </script>
+
+</body>
+
+</html>
