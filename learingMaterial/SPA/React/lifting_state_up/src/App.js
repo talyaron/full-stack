@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>{this.state.voteCouter}</h1>
-        <VoteUpDown voteCouter={this.state.voteCouter} countUp={this.countUp} countDown={this.countDown} />
+        <VoteUpDown countUp={this.countUp} countDown={this.countDown} />
       </div>
     );
   }
