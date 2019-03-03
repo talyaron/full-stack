@@ -2,8 +2,6 @@ const express = require('express');
 var cors = require('cors');
 
 const app = express();
-
-
 app.use(cors());
 
 app.get('/', (req, res) => {
@@ -11,10 +9,13 @@ app.get('/', (req, res) => {
 })
 
 app.get('/fetch', (req, res) => {
-    res.send({
-        name: "Moshe",
-        last:"Rabyino"
-    })
+    setTimeout(() => {
+        res.send({
+            name: "Moshe",
+            last: "Rabyino"
+        })
+    }, 0)
+
 })
 
 // app.use(express.static('public'));

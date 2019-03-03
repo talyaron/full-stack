@@ -4,16 +4,21 @@ function addition(x, y) {
   return x + y;
 }
 
+
 console.log(addition(3, 7));
 
-var addition2 = function (x, y) {
-  return x + y;
+
+
+var vatCalaculation = function (price) {
+  return price*vat;
 }
 
-console.log(addition2(7, 9))
 
 
-var addition3 = (x, y) => {
+console.log(vatCalaculation(20000,0.17))
+
+
+var addition3 = (x, y)=>  {
   return x + y;
 }
 
@@ -33,13 +38,11 @@ var ready = function () {
 
 
 
-var writeName = function (name = 'Yegal') {
-  console.log('your name is: ' + name);
+  var writeName = function (name = 45) {
+    console.log('your name is: ', name);
+  }
 
-
-}
-
-writeName('Sagiv');
+  writeName('Sagiv');
 
 function multy(a, b) {
   return a * b;
@@ -77,3 +80,10 @@ console.log(multy(2, 4));
 
 
 
+function returnedMoneyOnLoan(yearOfLoan, returnPerYear){
+  let todayYear = new Date().getFullYear() -2000;
+  let numberOfYears =  todayYear - yearOfLoan;
+  return numberOfYears*returnPerYear;
+}
+
+console.log(returnedMoneyOnLoan(1990,2000))

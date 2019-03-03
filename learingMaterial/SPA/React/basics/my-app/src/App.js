@@ -32,7 +32,7 @@ class App extends React.Component {
   render(){
     return (
       <div>        
-        <p>test test</p>
+        <p>test test {this.props.test}</p>
         {
           names.map((welcomeRow, key)=>{
             return <Welcome name={welcomeRow} key={key} last='bla' />
