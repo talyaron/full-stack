@@ -1,0 +1,7 @@
+Public Key:
+BMqsH2Mx6jZGIlhh1nC9hI-ivxzWQLa3_5M00Bssuf0bAqEb53ROH1__x-CQvL-1aS3UXP3TjpN1vA7HWPsKLtI
+
+Private Key:
+jf9c1p6kgeI6DdOXelv1ulBgn1JG5JfK07IycOmvt6s
+
+Google API key: AIzaSyAVFeae5FQFuTvP_wc89hrDC6EJPjGyiz0
