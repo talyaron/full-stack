@@ -8,3 +8,10 @@ self.addEventListener('push', e => {
         icon: '/img/logo-192.png'
     })
 })
+
+self.addEventListener('notificationclose', function (e) {
+    var notification = e.notification;
+    var primaryKey = notification.data.primaryKey;
+
+    console.log('Closed notification: ' + primaryKey);
+});
