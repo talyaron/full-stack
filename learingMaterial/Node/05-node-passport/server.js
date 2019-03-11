@@ -14,7 +14,7 @@ mongoose
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
-    console.log("we're connected to DB!");
+    console.log("we are connected to DB!");
 });
 
 const UserSchema = new mongoose.Schema({

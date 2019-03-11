@@ -29,9 +29,9 @@ app.get('/form', (req, res) => {
 })
 
 app.post('/form', function (req, res) {
-  
+
     res.redirect('/results/' + req.body.id);
-    
+
 });
 
 
@@ -40,7 +40,7 @@ app.get('/results/:id', (req, res) => {
     var dataName = '';
     if (req.params.id in data) {
         dataName = data[req.params.id]
-    } else{
+    } else {
         dataName = 'Data has no name';
     }
 
