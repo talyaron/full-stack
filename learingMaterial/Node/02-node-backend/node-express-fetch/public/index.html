@@ -9,41 +9,115 @@
 </head>
 
 <body>
-
+    <h1>Members:</h1>
+    <button onclick='getData()'>Get Data</button>
+    <div id='root'></div>
+    <form onsubmit='addMember(event)'>
+        <input type='text' name='name' placeholder="Name">
+        <input type='number' name='age' placeholder="Age">
+        <input type='submit' value='Submit' />
+    </form>
     <script>
-        fetch('/api')
-            .then(res => {
-                console.dir(res);
-                console.log(res.headers.get('Content-Type'));
-                console.log(res.headers.get('Date'));
-                if (!res.ok) {
-                    console.log('Error: ' + res.status);
 
-                    return;
-                }
+        let data_global = []
 
-                res.json().then(data => {
-                    console.log(data)
-                })
-            })
-            .catch(function (err) {
-                console.log('Fetch Error :-S', err);
-            });
+        function getData() {
+            fetch('/getMembers')
+                .then(res => {
 
+                    if (!res.ok) {
+                        console.log('Error: ' + res.status);
 
-        var data = { username: 'tal' };
+                        return;
+                    }
 
-        fetch('/api', {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
-            headers: {
-                'Content-Type': 'application/json'
+                    res.json().then(data => {
+                        data_global = data;
+                        console.dir(data_global)
+                        let dataDOM = '';
+                        for (let i = 0; i < data.length; i++) {
+                            dataDOM += `<p>${data[i].name}, age ${data[i].age} <button onclick="updateUp(${data[i].id})">up</button><button onclick='deleteMember(${data[i].id})'>Delete</button></p>`
+                        }
+
+                        root.innerHTML = dataDOM;
+
+                    }).catch(function (err) {
+                        console.log('Fetch Error :-S', err);
+                    })
+                });
+        }
+
+        function addMember(e) {
+            e.preventDefault();
+
+            //get values
+            let name = e.target.elements['name'].value;
+            let age = e.target.elements['age'].value;
+
+            //check if the data is in the correct format
+            if (name && age) {
+                let data = { name: name, age: age }
+
+                e.target.elements['name'].value = '';
+                e.target.elements['age'].value = '';
+
+                //post data to server
+                fetch('/addMember', {
+                    method: 'POST', // or 'PUT'
+                    body: JSON.stringify(data), // data can be `string` or {object}!
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => res.json())
+                    .then(response => {
+                        console.log('Success:', JSON.stringify(response));
+                        getData();
+                    })
+                    .catch(error => console.error('Error:', error));
             }
-        }).then(res => res.json())
-            .then(response => {
-                console.log('Success:', JSON.stringify(response))
+        }
+
+        function updateUp(memberId) {
+
+            console.dir(memberId)
+            console.dir(data_global)
+            let memberObj = data_global.find(function (element) {
+                return element.id == memberId
             })
-            .catch(error => console.error('Error:', error));
+            console.dir(memberObj)
+            memberObj.age++;
+
+
+            fetch('/updateMember', {
+                method: 'PUT',
+                body: JSON.stringify(memberObj), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+                .then(response => {
+                    console.log('Success:', JSON.stringify(response));
+                    getData();
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function deleteMember(memberId) {
+
+            fetch('/deleteMember', {
+                method: 'DELETE',
+                body: JSON.stringify({ id: memberId }), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+                .then(response => {
+                    console.log('Success:', JSON.stringify(response));
+                    getData();
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
     </script>
 </body>
 
