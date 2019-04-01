@@ -2,19 +2,17 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
-var MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 
 const yargs = require('yargs');
-
 const arguments = yargs.argv._
-
 console.log(arguments)
 
 //Local
-// var url = "mongodb://localhost:27017/mydb";
+var url = "mongodb://localhost:27017/mydb";
 
 //nodeChef
-var url = 'mongodb://nodechef-mongo-6060:Nos8DzRE5xYRUPCERykiNf9a20THxV@db-nodechef-mongo-6060.nodechef.com:5384/nodechef-mongo'
+// var url = 'mongodb://nodechef-mongo-6060:Nos8DzRE5xYRUPCERykiNf9a20THxV@db-nodechef-mongo-6060.nodechef.com:5384/nodechef-mongo'
 
 app.use(express.static('public'));
 
@@ -31,11 +29,11 @@ if (arguments == 'create') {
     MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) throw err;
         var dbo = db.db("nodechef-mongo");
-        dbo.createCollection("customers", function (err, res) {
+        dbo.createCollection("customersTal", function (err, res) {
             if (err) throw err;
             console.log("Collection created!");
             db.close();
-            res.send({ data: "Collection created!" })
+            // res.send({ data: "Collection created!" })
         });
     });
 }
@@ -94,7 +92,7 @@ app.post('/addUser', (req, res) => {
         if (err) throw err;
         var dbo = db.db("nodechef-mongo");
 
-        var mysort = { name: -1 };
+        
         dbo.collection("customers").insertOne(newUser, (function (err, result) {
             if (err) throw err;
             res.send(result)
