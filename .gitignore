@@ -1,3 +1,5 @@
 node_modules/
 learingMaterial/PWA/firebase-push notifications
 *.link.txt
+
+Node/02-node-backend/node-express-simple/package-lock\.json
