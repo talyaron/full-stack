@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RxJs</title>
+    <script src='https://npmcdn.com/@reactivex/rxjs@5.0.0-beta.6/dist/global/Rx.umd.js'></script>
+</head>
+<!-- based on : https://www.youtube.com/watch?v=T9wOu11uU6U -->
+
+<body>
+    <button>js</button>
+
+    <script>
+        let counter = 0;
+        let button = document.querySelector('button')
+        // button.addEventListener('click', e => {
+        //     console.log('clicked')
+        // })
+        // Rx.Observable.fromEvent(button, 'click')           
+        //     .subscribe(
+        //         e => { console.dir(e.target.innerText) },
+        //         err => { console.log(err) },
+        //         complete => { console.log('complete') }
+        //     )
+
+        // Rx.Observable.fromEvent(button, 'click')
+        //     .throttleTime(1000)
+        //     .subscribe(
+        //         e => {
+        //             console.log(`${e.target.innerText} ${counter} times`);
+        //             counter++;
+        //         },
+        //         err => { console.log(err) },
+        //         complete => { console.log('complete') }
+        //     )
+
+
+        // Rx.Observable.fromEvent(button, 'click')
+        //     .throttleTime(1000)
+        //     .map(ev => { return ev.clientY })
+        //     .subscribe(
+        //         e => {
+        //             console.log(`${e} ${counter} times`);
+        //             counter++;
+        //         },
+        //         err => { console.log(err) },
+        //         complete => { console.log('complete') }
+        //     )
+
+        let buttonJs$ = Rx.Observable.fromEvent(button, 'click')
+            .throttleTime(1000)
+            .map(ev => { return ev.clientY });
+
+        buttonJs$.subscribe(
+            e => {
+                console.log(`${e} ${counter} times`);
+                counter++;
+            },
+            err => { console.log(err) },
+            complete => { console.log('completed') }
+        )
+
+        buttonJs$.subscribe(
+            e => {
+                console.log(`${e} ${counter} times`);
+                counter++;
+            },
+            err => { console.log(err) },
+            complete => { console.log('completed') }
+        )
+
+        let arrSteam$ = Rx.Observable.from([1, 3, 6, 7, 8]);
+
+        arrSteam$.subscribe(el => { console.log(el) })
+
+
+
+
+    </script>
+
+</body>
+
+</html>
