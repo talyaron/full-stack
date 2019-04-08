@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mongo-ajax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Hi</h1>
+    <input type="button" id='get-products' value="Get Users" onclick="getUsers()">
+    <br>
+    <p>Add user</p>
+    <input type="text" placeholder='username' id='userToAdd'>
+    <input type="text" placeholder='Address' id='address'>
+    <button onclick='addUser()'>Add</button>
+
+    <div id='root'></div>
+
+
+
+</body>
+<script>
+    // $('#get-products').on('click', () => {
+    //     $.ajax("/api", {
+    //         type: 'GET',
+    //         contentType: 'application/json'
+    //     })
+    //         .done(data => {
+    //             console.dir(data)
+
+    //         })
+    //         .fail((jqXHR, textStatus, error) => {
+    //             console.log(jqXHR, textStatus, error)
+    //         })
+
+    // })
+
+    function getUsers() {
+        fetch('/getUsers')
+            .then(res => {
+                res.json().then(data => {
+                    let usersString = `<h3>Some of Users ${data.length}</h3>`;
+                    for (let i = 0; i < data.length; i++) {
+                        usersString += `<p>Name: ${data[i].name}, Address: ${data[i].address}</p>`
+                    }
+
+                    root.innerHTML = usersString;
+
+                }).catch(function (err) {
+                    console.log('Fetch Error :-S', err);
+                })
+            });
+    }
+
+    function addUser() {
+        //get user name and address;
+        let userName = document.getElementById('userToAdd').value;
+        let address = document.getElementById('address').value;
+
+        let newUser = { name: userName, address: address }
+
+
+        fetch('/addUser', {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(newUser), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .then(response => {
+                console.log('Success:', JSON.stringify(response));
+                getUsers();
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+
+</script>
+
+</html>
