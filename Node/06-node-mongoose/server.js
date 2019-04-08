@@ -5,17 +5,12 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 //Local
-var url = "mongodb://localhost:27017/mydb";
-mongoose.connect(url, { useNewUrlParser: true });
 
 const yargs = require('yargs');
 
 const arguments = yargs.argv._
 
 console.log(arguments)
-
-
-
 
 app.use(express.static('public'));
 
@@ -24,22 +19,27 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+
+//connect mongoDB
+const url = "mongodb://localhost:27017/mydb";
+mongoose.connect(url, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-    console.log('we are connected!')
-
+    console.log('we are connected!');
 });
 
 
 //Define a schema
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var SomeModelSchema = new Schema({
+const SomeModelSchema = new Schema({
     name: String,
-    a_string: String,
-    a_date: Date
+    last: String,
+    date: Date
 });
+
+for (i=0; i<10;i++){
 //Schema types can be:
 
 // String
@@ -52,13 +52,12 @@ var SomeModelSchema = new Schema({
 // Array
 // Decimal128
 // Map
-
-
-// Compile model from schema
-var SomeModel = mongoose.model('SomeModel', SomeModelSchema);
+}
+// create collection (model) with it's schema
+const SomeModel = mongoose.model('SomeModel', SomeModelSchema);
 
 // Create an instance of model SomeModel
-var awesome_instance = new SomeModel({ name: 'awesome' });
+var awesome_instance = new SomeModel({ name: 'awesome', last:"bla" });
 
 // Save the new model instance, passing a callback
 awesome_instance.save(function (err) {
