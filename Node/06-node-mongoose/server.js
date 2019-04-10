@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 
 
 //connect mongoDB
-const url = "mongodb://localhost:27017/mydb";
+const url = "mongodb://localhost:27017/newDb";
 mongoose.connect(url, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -29,13 +29,12 @@ db.once('open', () => {
     console.log('we are connected!');
 });
 
-
 //Define a schema
 const Schema = mongoose.Schema;
-
 const SomeModelSchema = new Schema({
     name: String,
     last: String,
+    age:Number,
     date: Date
 });
 
@@ -54,10 +53,10 @@ for (i=0; i<10;i++){
 // Map
 }
 // create collection (model) with it's schema
-const SomeModel = mongoose.model('SomeModel', SomeModelSchema);
+const SomeModel = mongoose.model('myModel', SomeModelSchema);
 
 // Create an instance of model SomeModel
-var awesome_instance = new SomeModel({ name: 'awesome', last:"bla" });
+var awesome_instance = new SomeModel({ name: 'awesome', last:"bla", age:12 });
 
 // Save the new model instance, passing a callback
 awesome_instance.save(function (err) {
