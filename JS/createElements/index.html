@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <style>
+        .go{
+            background: gold;
+            border-bottom: 1px solid goldenrod;
+        }
+        .stop{
+            background: rgb(253, 22, 22);
+            border-bottom: 1px solid goldenrod;
+        }
+    </style>
+<body>
+    <script>
+        console.time('startDOM');
+        let divs = [];
+        for (i = 0; i < 10000; i++) {
+            divs[i] = document.createElement('div');
+            divs[i].innerHTML = `<div>${i}: good job<button onclick="updateDiv(event, this, ${i})">OK</button></div>`;
+            divs[i].setAttribute('class', 'go');
+            document.body.append(divs[i]);
+            
+        }
+        setTimeout(()=>{
+            for (i = 0; i < 10000; i++){
+                divs[i].setAttribute('class', 'stop');
+            }
+        }, 1000)
+        console.timeEnd('startDOM');
+
+        function updateDiv(event, self, i){
+           
+            self.innerText = 'Good'
+            divs[i].innerText = 'blo'
+        }
+    </script>
+</body>
+
+</html>

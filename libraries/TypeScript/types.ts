@@ -1,55 +1,67 @@
-let aString: string;
-let aNumber: number;
-let aBoolean: boolean;
-let anAny: any;
+// let aString: string;
+// let aNumber: number;
+// let aBoolean: boolean;
+// let anAny: any; 
+// let x: number
+// let y:any;
+// y = 'abcd';
+// y= 6;
 
 // aString = '4';
 // aNumber = 4;
 // aBoolean = true;
-// anAny = { e: 4 }
+// anAny = { e: 4 };
 
-// console.log(aString, aNumber, anAny, aBoolean)
+// for (let i=0;i<10;i++){
+//     let xi:number;
+//     xi = i;
+//     console.log(xi)
+// }
+
+
+
+// console.log(aString, aNumber, anAny, aBoolean, y)
 
 // let arrStrings: string[];
 // let arrStrings2: Array<string>;
 
 // arrStrings = ['a', 'b'];
-// arrStrings2 = ['a', 'b']
-// console.dir(arrStrings, arrStrings2)
+// arrStrings2 = ['c', 'd'];
+// console.log(arrStrings, arrStrings2)
 
-// let arrTuple: [string, boolean];
-// arrTuple = ['a', true]
+// let arrTuple: [string, boolean, number];
+// arrTuple = ['a', true,4];
 // console.log(arrTuple)
 
-// function add(firstNumber: number, secondNumber: number): number {
-//     return firstNumber + secondNumber;
-// }
+function add(firstNumber: number, secondNumber: number): number {
+    return firstNumber + secondNumber;
+}
 
-// console.log(add(3, 5))
+console.log(add(3, 5))
 
 //Interface
 
 //without interface
-// function substract(numbs: { first: number, second: number }): number {
-//     return numbs.first - numbs.second
-// }
+function substract(numbs: { first: number, second: number }): number {
+    return numbs.first - numbs.second
+}
 
-// let subObj = { first: 4, second: 2 };
-// console.log(substract(subObj));
+let subObj = { first: 4, second: 2 };
+console.log(substract(subObj));
 
 //with interface
-// interface substractInt {
-//     first: number,
-//     second: number
-// }
+interface substractInt {
+    first: number,
+    second: number
+}
 
-// function substract2(numbs: substractInt): number {
-//     return numbs.first - numbs.second
-// }
+function substract2(numbs: substractInt): number {
+    return numbs.first - numbs.second
+}
 
-// let sub2 = { first: 10, second: 20 }
+let sub2:substractInt = { first: 10, second: 20 }
 
-// console.log(substract2(sub2));
+console.log(substract2(sub2));
 
 
 
