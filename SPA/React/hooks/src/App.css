@@ -1,3 +1,13 @@
-.power{
+.power {
   background: gold;
+}
+
+.dark {
+  background: gray;
+  height: 100vh;
+}
+
+.light {
+  background: rgb(214, 214, 214);
+  height: 100vh;
 }
