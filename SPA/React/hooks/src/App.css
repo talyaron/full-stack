@@ -11,3 +11,17 @@
   background: rgb(214, 214, 214);
   height: 100vh;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.bigButton {
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 2rem;
+  margin: 20px;
+}

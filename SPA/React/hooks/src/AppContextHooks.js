@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext }  from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './App.css';
 
 
@@ -25,6 +25,7 @@ function App() {
 function Toolbar(props) {
     return (
         <div>
+
             <ThemedButton />
         </div>
     );
