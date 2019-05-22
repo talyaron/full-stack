@@ -12,6 +12,10 @@ function App(props) {
 
   useEffect(() => {    
     document.title = `You clicked ${count} times`;
+    console.log('useEffect', count)
+    return ()=>{
+
+    }
   });
 
   //In this example, React would unsubscribe from our ChatAPI when the component unmounts

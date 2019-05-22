@@ -6,17 +6,24 @@ import './App.css';
 
 const App = () => {
     // starting state
-    const initialState = {
-        theme: { primary: 'green' }
+    const appState = {
+        theme: { primary: 'green' },
+        color: 'red',
+        count: 0
     };
 
     //REDUCER: a function that changes the state according to predifined ACTIONS and their payload
-    const reducer = (state, action) => {        
+    const reducer = (state, action) => {
         switch (action.type) {
             case 'changeTheme':
                 return {
                     ...state,
-                    theme: action.newTheme
+                    theme: action.payload
+                };
+            case 'addToCounter':
+                return {
+                    ...state,
+                    count: action.payload
                 };
             default:
                 return state;
@@ -24,31 +31,37 @@ const App = () => {
     };
 
     return (
-        <StateProvider initialState={initialState} reducer={reducer}>
-            <div className='buttons'>
-                <Button1 />
-                <Button2 />
-            </div>
+        <StateProvider appState={appState} reducer={reducer}>
+
+            <Button1 />
+            <Button2 />
+
         </StateProvider>
     );
 }
 
 
 const Button1 = () => {
-    const [{ theme }, dispatch] = useStateValue();
+    const [{ theme }, dispatchTheme] = useStateValue();
+    const [{ count }, dispatchCounter] = useStateValue();
     return (
         <button
             className='bigButton'
             style={{ background: theme.primary }}
             onClick={() => {
 
-                dispatch({
+                dispatchTheme({
                     type: 'changeTheme',
-                    newTheme: { primary: 'red' }
+                    payload: { primary: 'red' }  //payload
+                })
+                dispatchCounter({
+                    type: 'addToCounter',
+                    payload: count+2  //payload
                 })
             }}
         >
-            {theme.primary}
+            <p>{theme.primary}</p>
+            <p>{count}</p>
         </button>
     );
 }
@@ -60,10 +73,9 @@ function Button2(props) {
             className='bigButton'
             style={{ background: theme.primary }}
             onClick={() => {
-
                 dispatch({
                     type: 'changeTheme',
-                    newTheme: { primary: 'blue' }
+                    payload: { primary: 'blue' }
                 })
             }}
         >
