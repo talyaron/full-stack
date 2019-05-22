@@ -5,19 +5,19 @@ import './App.css';
 //based on https://medium.com/simply/state-management-with-react-hooks-and-context-api-at-10-lines-of-code-baf6be8302c
 
 const App = () => {
+    // starting state
     const initialState = {
         theme: { primary: 'green' }
     };
 
-    const reducer = (state, action) => {
-        
+    //REDUCER: a function that changes the state according to predifined ACTIONS and their payload
+    const reducer = (state, action) => {        
         switch (action.type) {
             case 'changeTheme':
                 return {
                     ...state,
                     theme: action.newTheme
                 };
-
             default:
                 return state;
         }
@@ -36,7 +36,6 @@ const App = () => {
 
 const Button1 = () => {
     const [{ theme }, dispatch] = useStateValue();
-
     return (
         <button
             className='bigButton'
