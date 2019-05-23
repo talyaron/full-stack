@@ -16,7 +16,7 @@ function App(props) {
     return ()=>{
 
     }
-  });
+  },[]);
 
   //In this example, React would unsubscribe from our ChatAPI when the component unmounts
   //There can be more the one "useEffect"
