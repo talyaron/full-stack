@@ -2,14 +2,21 @@
   background: gold;
 }
 
+.buttons{
+  border:2px solid white;
+  border-radius: 10px;
+  max-width: 100px;
+  padding: 20px;
+}
+
 .dark {
   background: gray;
-  height: 100vh;
+ 
 }
 
 .light {
   background: rgb(214, 214, 214);
-  height: 100vh;
+  
 }
 
 .buttons {

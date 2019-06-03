@@ -13,8 +13,8 @@ function App() {
     // Any component can read it, no matter how deep it is.
     // In this example, we're passing "dark" as the current value.
     return (
-        <ThemeContext.Provider value="dark">
-            <Toolbar />
+        <ThemeContext.Provider value="light">
+            <Toolbar theme='light' />
         </ThemeContext.Provider>
     );
 
@@ -26,19 +26,19 @@ function Toolbar(props) {
     return (
         <div>
 
-            <ThemedButton />
+            <ThemedButton theme={props.theme} />
         </div>
     );
 }
 
-function ThemedButton() {
+function ThemedButton(props) {
     // Assign a contextType to read the current theme context.
     // React will find the closest theme Provider above and use its value.
     // In this example, the current theme is "dark".
     // let contextType = ThemeContext;
     const theme = useContext(ThemeContext);
 
-    return <Button theme={theme} />;
+    return <Button theme={props.theme} />;
 
 }
 
@@ -48,7 +48,7 @@ class Button extends React.Component {
     // In this example, the current theme is "dark".
 
     render() {
-        return <div class={this.props.theme}>{this.props.theme}</div>;
+        return <div className={`buttons ${this.props.theme}`}>{this.props.theme}</div>;
     }
 }
 

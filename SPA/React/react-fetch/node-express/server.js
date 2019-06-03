@@ -12,9 +12,9 @@ app.get('/fetch', (req, res) => {
     setTimeout(() => {
         res.send({
             name: "Moshe",
-            last: "Rabyino"
+            last: "Rabeynu"
         })
-    }, 0)
+    }, 2000)
 
 })
 
@@ -23,5 +23,5 @@ app.get('/fetch', (req, res) => {
 let port = process.env.PORT || 4000;
 
 app.listen(port, function () {
-    console.log('Server liten on port', port)
+    console.log('Server listen on port', port)
 })
