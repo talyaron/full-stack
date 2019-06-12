@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import socketIOClient from "socket.io-client";
 
-function App(props) {
-  const [data, setData] = useState('')
-  const [messages, setMessages] = useState([]);
-  const [endPoint, setEndPoint] = useState('http://localhost:4000');
-  const socket = socketIOClient(endPoint);
+const socket = socketIOClient('http://localhost:4000');
+let tempSocketMessages = [];
+let counter = 0;
 
-  useEffect(() => { 
-    socket.on('chat message', dataIn => { setData(dataIn); console.log(dataIn) })
+function App(props) {
+  const [newMsgs, setNewMsgs] = useState(0)
+  const [messages, setMessages] = useState([]);
+
+
+  useEffect(() => {
+    socket.on('chat message', newMessage => {
     
+
+      // tempSocketMessages.push(newMsgs)
+      tempSocketMessages.push(newMessage)
+      
+      setNewMsgs(counter + 1);
+      counter++;
+      console.log(newMsgs)
+    })
+
     fetch("http://localhost:4000/messages")
       .then(response => {
         return response.json();
@@ -20,33 +31,42 @@ function App(props) {
         console.dir(data.messages);
         setMessages(data.messages);
       });
-    
-    console.log('use effect')
-  },[]);
+
+    console.log('use effect init')
+  }, []);
+
+  
 
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {data}
-        </p>
-        
-          Learn React{" "}
-        
-      </header>{" "}
-      <input type='text' onKeyUp={(e)=>{
-        socket.emit("chat message", e.target.value);
+
+      <div className='messages' id='messagesDiv'>
+        {
+          messages.map((message, index) => {
+
+            return <p key={index}>{message.message}</p>
+          })
+        }
+        {
+          tempSocketMessages.map((message, index) => {
+
+            return <p key={index+'socket'}>{message.message}</p>
+          })
+        }
+      </div>
+
+      <input type='text' className='inputText' onKeyUp={(e) => {
+        if (e.key === 'Enter') {
+          socket.emit("chat message", e.target.value);
+          e.target.value = '';
+        }
       }} />
-      {
-        messages.map((message, index) => {
-          return <p key={index}>{message.message}</p>
-        })
-      }
     </div>
+
   );
 
 }
 
 export default App;
+

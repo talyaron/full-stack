@@ -65,7 +65,7 @@ io.on('connection', function(socket){
     });
 
     console.log('message: ' + msg);
-    io.emit('chat message', msg);
+    io.emit('chat message', { name: 'me', message: msg, date: new Date() }  );
   });
 
   socket.on('disconnect', function(){
@@ -86,7 +86,7 @@ app.get('/messages', (req, res) => {
     if (err) throw err;
     console.log('found', docs)
     res.send({ messages: docs })
-  })
+  }).limit(12).sort({ 'date': -1 })
 
 })
 
