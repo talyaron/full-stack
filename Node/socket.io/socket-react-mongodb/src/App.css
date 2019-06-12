@@ -35,6 +35,7 @@ html {
   box-sizing: border-box;
   padding: 10px;
   box-shadow: inset 0 0 5px #000000;
+  direction: rtl;
 }
 
 .messages {
