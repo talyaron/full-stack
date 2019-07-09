@@ -1,0 +1,18 @@
+div {
+    border: 1px solid gray;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.wrapper {
+    background: darkblue;
+}
+
+.item {
+    background: lightblue;
+    margin: auto;
+    max-width: 400px;
+}
