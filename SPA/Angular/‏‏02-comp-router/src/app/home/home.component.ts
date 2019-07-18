@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { isBoolean } from 'util';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  isBlue:boolean = false;
+
+  constructor(private data:DataService) { }
 
   ngOnInit() {
   }
 
+  clicked(){
+    this.data.clickedFunction()
+  }
+  
 }
+
