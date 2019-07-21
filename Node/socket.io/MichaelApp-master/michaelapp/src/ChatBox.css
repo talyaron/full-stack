@@ -1,0 +1,80 @@
+.gridWrapper {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
+  display: flex;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.original-grid-container {
+  padding: 25 px;
+  border: solid orange 4px;
+  background-color: rgba(70, 66, 61, 0.144);
+  height: 65vh;
+  width: 75vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 0.4fr 1.6fr;
+  grid-template-rows: 85% 15%;
+  grid-template-areas: "NickNamesArea ChatArea" "NickNamesArea ChatInputArea";
+}
+
+.NickNamesArea { 
+  grid-area: NickNamesArea; 
+  border-right: solid orange 4px;
+}
+
+.ChatArea { 
+  grid-area: ChatArea; 
+  overflow-y: scroll;
+}
+
+.ChatInputArea { grid-area: ChatInputArea; }
+
+.messageInputWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  align-self: stretch;
+}
+.messageTypingSpot{
+  width: 100%;
+  background-color: rgba(70, 66, 61, 0.144);
+  font-size: 18px;
+  color: white;
+  resize: horizontal;
+}
+.ChatInputButton{
+  all: unset;
+  display: flex;
+  color: white;
+  height: 100%;
+  width: 10vw;
+  font-size: 22px;
+  cursor: pointer;
+  background-color: rgb(223, 127, 3);
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  border:2px solid black;
+}
+
+.ChatArea::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+
+.ChatArea::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+.ChatArea::-webkit-scrollbar-thumb {
+  background-color: #0ae;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+}
