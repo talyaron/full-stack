@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Canvas</title>
+  </head>
+  <body onload="showImage()">
+    <img
+      id="scream"
+      src="img_the_scream.jpg"
+      alt="The Scream"
+      width="220"
+      height="277"
+      hidden=true      
+    />
+    <canvas
+      id="canvas1"
+      width="400"
+      height="200"
+      style="border:1px solid #000000;"
+    >
+    </canvas>
+    <script>
+
+        //W3 refernce for canvas: https://www.w3schools.com/graphics/canvas_reference.asp
+
+      let c = document.getElementById("canvas1");
+      let ctx = c.getContext("2d");
+      ctx.moveTo(0, 0);
+      ctx.lineTo(200, 200);
+      ctx.lineTo(0,70);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+      ctx.strokeStyle = "red";
+      ctx.stroke();
+      //context.arc(x,y,r,startAngle,endAngle,counterclockwisePixels);
+
+      ctx.font = "30px Arial";
+      ctx.fillStyle = "orange";
+      ctx.fillText("I am a canvas!", 10, 50);
+
+      //   ctx.strokeStyle = "blue";
+      //   ctx.strokeText("I am a canvas!", 10, 50);
+
+      function showImage() {
+        let img = document.getElementById("scream");
+        ctx.drawImage(img, 100, 100, 80, 70);
+
+        let pic = c.toDataURL('/image/png');
+        console.log(pic)
+      }
+    </script>
+  </body>
+</html>

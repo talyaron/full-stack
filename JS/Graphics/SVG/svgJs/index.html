@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="svgJs.js"></script>
+  </head>
+  <body>
+    <div id="drawing"></div>
+    <script>
+      var draw = SVG("drawing").size(300, 300);
+      var rect = draw.rect(100, 100).attr({ fill: "#f06" });
+      //   rect.animate(2000).move(100, 100).rotate(45).skew(25, 0);
+      rect
+        .animate(500, ">", 1000)
+        .move(100, 100)
+        .rotate(45)
+        .skew(25, 0);
+
+      rect.click(function() {
+        this.fill({ color: "#aba" });
+      });
+    </script>
+  </body>
+</html>
