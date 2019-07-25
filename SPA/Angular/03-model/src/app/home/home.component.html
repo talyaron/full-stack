@@ -1,0 +1,20 @@
+<h1
+  [ngStyle]="{
+    color: isBlue ? 'green' : 'orange',
+    background: isBlue ? 'pink' : 'lightblue'
+  }"
+>
+  Home
+</h1>
+
+<!-- <h1 [style.font-size]="isBlue? '1rem' : '3rem' ">Home</h1> -->
+<!-- <h1 [ngClass]="{'blue':isBlue, 'white':isBlue}"></h1> -->
+<!-- <h1 [class.blue]='isBlue'>Home</h1> -->
+
+<button (click)="clicked()">Click</button>
+
+<ul>
+  <li *ngFor='let book of books'>
+    {{book.title|uppercase}}, {{book.author}}, {{book.yearOfPublication}}
+  </li>
+</ul>
