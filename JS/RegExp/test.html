@@ -14,7 +14,7 @@
       let regexp = new RegExp(text);
       let results = regexp.test(string);
       console.dir(results);
-      if (results !== null) {
+      if (results === true) {
         console.log(`I was able to find "${text}" in "${string}"`);
       } else {
         console.log(`"${text}" was not found in "${string}"`);
