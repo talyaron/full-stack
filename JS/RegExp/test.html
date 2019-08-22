@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //return true if it can find or false if it can't find.
+      let string = "all Over the worldy";
+      let text = "y";
+      let regexp = new RegExp(text);
+      let results = regexp.test(string);
+      console.dir(results);
+      if (results === true) {
+        console.log(`I was able to find "${text}" in "${string}"`);
+      } else {
+        console.log(`"${text}" was not found in "${string}"`);
+      }
+    </script>
+  </body>
+</html>

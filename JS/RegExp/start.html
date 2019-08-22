@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RegExp</title>
+</head>
+<body>
+    <script>
+        //regular expression are patterns used to match character combinations in strings.
+        // In JavaScript, regular expressions are also objects
+        //use this page for learning: https://regexr.com/
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
+
+        //initilizing reg exp
+        const rgexp = /ab/;
+        //or
+        let rgExp = new RegExp('ab+c','g');
+
+        let str = 'this is abrhamson';
+        console.log(str.search(rgexp)); // 8
+
+        //finding * (repeats of the letter, for example a* matches aaaaaaaaa or a)
+
+        rgExp = /ab*r/g;
+        console.log(str.search(rgExp));
+
+        // * : Match 0 and more of the precding charcter
+        // + : Match 1 and more of the precding charcter
+
+        // [a-f]: match charcters a to f
+        // [abd] match charcter a or b or d
+        // [^a] match everthing that is not a
+
+        // a|b : match a or b
+
+        //boundaris
+        // /b -> start of a word. for example /bb -> match all the words that start with b
+        // ^ -> start of a text or line (if flag m (multi line is set))
+        // $ match the end of a line or a string, depending on the m flag
+
+        //flags (at the end);
+        //  /g -> look for all cases
+        //  /i -> case insensitive
+
+        //remebering
+        // use () to remember:
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_parenthesized_substring_matches
+
+
+        // String methods to work with regExp
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Working_with_regular_expressions
+    </script>
+</body>
+</html>

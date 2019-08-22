@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SVG</title>
+    <!-- https://css-tricks.com/lodge/svg/ -->
+  </head>
+  <body>
+    <svg width="600" height="600">
+      <g>
+        <text x="30" y="50" onClick="showColor()">
+          Click me to show rectangle color.
+        </text>
+
+        <rect
+          id="rect1"
+          x="100"
+          y="100"
+          width="200"
+          height="200"
+          stroke="green"
+          stroke-width="3"
+          fill="red"
+          onClick="showArea(event)"
+        />
+
+        <text x="30" y="400" onClick="showRootChildrenCount()">
+          Click me to print child node count.
+        </text>
+      </g>
+    </svg>
+    <script>
+      function showColor() {
+        alert(
+          "Color of the Rectangle is: " +
+            document.getElementById("rect1").getAttributeNS(null, "fill")
+        );
+      }
+
+      function showArea(event) {
+        var width = parseFloat(event.target.getAttributeNS(null, "width"));
+        var height = parseFloat(event.target.getAttributeNS(null, "height"));
+        alert("Area of the rectangle is: " + width + "x" + height);
+      }
+
+      function showRootChildrenCount() {
+        alert("Total Children: " + document.documentElement.childNodes.length);
+      }
+    </script>
+  </body>
+</html>

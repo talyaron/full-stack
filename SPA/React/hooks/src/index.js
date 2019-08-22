@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './AppContextHooks';
+import App from './AppContextHooksReducer';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App title='Starting Hooks' />, document.getElementById('root'));

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Assert</title>
+</head>
+
+<body>
+    <script>
+        let x = 3,
+            y = 0;
+
+        function multi(x, y) {
+            if (typeof x === 'number' && typeof y === 'number') {
+                return x * y;
+            } else {
+                console.error(`x or y is on a number. x:${x}, y:${y}`);
+                return null
+            }
+        }
+
+        function divide(x, y) {
+            let check = (Object.prototype.toString.call(x) === '[object Number]' && Object.prototype.toString.call(y) === '[object Number]' && y != 0);
+            console.assert(check, 'some error',x,y)
+            if (check) {
+
+                return x / y;
+            } else {
+               
+                return undefined;
+            }
+        }
+
+        console.log(divide(x, y))
+
+        // function returnKeys(obj){
+        //     if(typeof obj === 'object'){
+        //         let arr = [];
+        //         for(i in obj){
+        //             arr.push(obj[i]);
+        //         }
+        //         return arr;
+        //     } else{
+        //         console.error(`returnKeys axcepected and obj and got a non object:`);
+        //         console.error(obj);
+        //         return undefined;
+        //     }
+        // }
+
+        // console.log(returnKeys(null));
+
+        // //null, array, Date, are types of object, and may  result an error
+
+
+        function returnKeys2(obj) {
+            if (Object.prototype.toString.call(obj) === '[object Object]') {
+                let arr = [];
+                for (i in obj) {
+                    arr.push(obj[i]);
+                }
+                return arr;
+            } else {
+                console.error(`returnKeys2 axcepected and obj and got a non object:`);
+                console.error(obj);
+                return undefined;
+            }
+        }
+
+        // console.log(returnKeys2({a:1, b:2}))
+
+
+        //For complex checking, use typeScript....
+
+
+
+    </script>
+</body>
+
+</html>

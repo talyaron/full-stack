@@ -1,0 +1,36 @@
+::-moz-selection { /* Code for Firefox */
+    color: red;
+    background: yellow;
+  }
+  
+  ::selection {
+    color: red;
+    background: yellow;
+  }
+
+.someClass.SomeOtherClass{
+    background: brown;
+}
+
+.container > p{
+     background: olive;
+}
+
+div + p {
+    font-size: 2rem;
+}
+
+[data-set]{
+    transform: rotate(20deg);
+}
+
+.afterMe::after{
+    color: orange;
+    content: "good"
+}
+
+.someInput::after{
+    background: orchid;
+    font-size: 2rem;
+}
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let dates = [
+        //     '12/25/19',
+        //     '12/31/19',
+        //     '12/3/19'
+        // ]
+
+        let dates = [
+            '25/12/19',
+            '31/06/19',
+            '12/3/19'
+        ]
+
+        let isUSADate = false;
+        // const regexp = /\/[2-3][0-9]/g
+        const regexp = /(\/[2-3][0-9]\/)|(\/1[3-9]\/)/g
+        
+        
+        for( let i in dates){
+            if(regexp.test(dates[i])) 
+            {
+                isUSADate = true;
+                console.log('this is a USA date') ;
+                    break;
+            }
+        }
+        if(!isUSADate) console.log('this is not USA date')
+       
+    </script>
+</body>
+
+</html>

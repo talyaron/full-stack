@@ -1,0 +1,113 @@
+.gridWrapper {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
+  display: flex;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.original-grid-container {
+  padding: 25 px;
+  border: solid orange 4px;
+  background-color: rgba(70, 66, 61, 0.144);
+  height: 75vh;
+  width: 75vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 0.4fr 1.6fr;
+  grid-template-rows: 85% 15%;
+  grid-template-areas: "NickNamesArea ChatArea" "NickNamesArea ChatInputArea";
+}
+
+.NickNamesArea {
+  grid-area: NickNamesArea;
+  border-right: solid orange 4px;
+}
+
+.ChatArea {
+  grid-area: ChatArea;
+  overflow-y: scroll;
+  width: 60vw;
+ 
+}
+
+.ChatInputArea {
+  grid-area: ChatInputArea;
+}
+
+.messageInputWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  align-self: stretch;
+}
+
+.messageTypingSpot {
+  width: 100%;
+  background-color: rgba(96, 100, 105, 0.144);
+  font-size: 18px;
+  color: white;
+  resize: horizontal;
+}
+
+.ChatArea::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgb(146, 150, 151);
+}
+
+.ChatArea::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgb(78, 78, 82);
+}
+
+.ChatArea::-webkit-scrollbar-thumb {
+  background-color: rgb(78, 78, 82);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(78, 78, 82, .2)), color-stop(.5, transparent), to(transparent));
+}
+
+.messageBubble {
+  background-color: rgba(231, 225, 222, 0.144);
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 0px;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgb(204, 202, 202);
+  padding: 15px 18px;
+  position: relative;
+  vertical-align: top;
+  width: fit-content;
+  height: fit-content;
+  word-break: break-word;
+}
+
+.messageBubble::before {
+  background-color: rgba(70, 66, 61, 0.144);
+  display: block;
+  height: 16px;
+  position: absolute;
+  top: 11px;
+  transform: rotate( 29deg) skew( -35deg);
+  -moz-transform: rotate( 29deg) skew( -35deg);
+  -ms-transform: rotate( 29deg) skew( -35deg);
+  -o-transform: rotate( 29deg) skew( -35deg);
+  -webkit-transform: rotate( 29deg) skew( -35deg);
+  width: 20px;
+}
+.messageDate{
+  background-color: rgba(70, 66, 61, 0.144);
+  font-size: 10px;
+  color: #B2B2B2;
+  width: fit-content;
+  display: inline;
+}
+.userName{
+  margin-right: 0.5vw;
+  font-size: 16px;
+  color: white;
+  width: fit-content;
+  display: inline;
+}
