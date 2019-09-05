@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let dataBaseMoc = ['boo', 'baz', 'bee', 'lob', 'groo'];
+        let searchTerm = 'boo';
+        let searchResault = dataBaseMoc.filter(word => {
+            return word == searchTerm
+        })
+
+        let regexp = /b/
+
+        let searchResault2 = dataBaseMoc.filter(word => {
+            return regexp.test(word)
+        })
+
+        console.dir(searchResault)
+        console.dir(searchResault2)
+
+    </script>
+</body>
+
+</html>
