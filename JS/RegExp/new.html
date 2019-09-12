@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New</title>
+</head>
+<body>
+    <script>
+     let promise = new Promise((resolve, reject)=>{
+         fetch('http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv')
+         .then(res=>{
+             res.json().then(data=>{
+                resolve(data)
+             }).catch(err=>{                
+                 console.error(err);
+                 reject(err)
+             })
+         })
+     })
+
+     async function test(){
+         let x = await promise;
+
+         console.log(x)
+     }
+
+     test();
+    
+    </script>
+</body>
+</html>
