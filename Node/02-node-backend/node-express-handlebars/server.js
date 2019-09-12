@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
+    
     res.render('about', { user: 'Tal', famelyName: 'Yaron', people: people })
 })
 
