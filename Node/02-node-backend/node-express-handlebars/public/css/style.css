@@ -1,3 +1,16 @@
 h1 {
     background: red;
 }
+
+header{
+    background: rgb(163, 54, 72);
+    color: white;
+    display:flex;
+}
+header>a{
+    cursor: pointer;
+    user-select: none;
+    padding:10px;
+    text-decoration: none;
+    color: white;
+}
