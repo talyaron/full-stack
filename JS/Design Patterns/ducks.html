@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ducks</title>
+  </head>
+  <body>
+    <script>
+      class Duck {
+        constructor(name) {
+          this.name = name;
+        }
+        shape() {
+          console.log(`${this.name} in the shape of a duck`);
+        }
+      }
+
+      function quack() {
+        console.log(`${this.name} quack!`);
+      }
+      function fly() {
+        console.log(`${this.name} is flying`);
+      }
+      
+
+      class FlyingDuck extends Duck{
+          constructor(name){
+              super(name);
+              this.name = name
+          }
+         
+          
+      }
+      FlyingDuck.prototype.fly = fly;
+      FlyingDuck.prototype.quack = quack;
+
+      let ducky = new FlyingDuck("ducky");
+      let rubiDuck = new Duck('rubiDuck');
+
+    //   ducky.fly = fly;
+    //   ducky.quack = quack;
+
+      ducky.shape();
+      ducky.quack();
+      ducky.fly();
+
+      rubiDuck.shape();
+
+      console.dir(ducky);
+      console.dir(rubiDuck);
+      console.log(ducky.constructor.name)
+      console.log(rubiDuck.constructor.name)
+    </script>
+  </body>
+</html>
