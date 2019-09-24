@@ -20,15 +20,15 @@
     background-color: red;
     animation-name: turnRight, colorChange;
     animation-duration: 1s;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 3;
     /* animation  delay */
-    animation-delay: 2s;
+    /* animation-delay: 2s; */
     /* number of times to run */
     /* animation-iteration-count: 5; */
 
     /* from-to and reverse animation */
-    /* animation-direction: reverse; */
-    animation-direction: alternate;    
+    animation-direction: reverse;
+    /* animation-direction: alternate;     */
     animation-timing-function: ease-out;
     /*  linear|ease|ease-in|ease-out|ease-in-out|step-start|step-end|steps(int,start|end)|cubic-bezier(n,n,n,n)|initial|inherit; */
 
@@ -52,15 +52,15 @@
     }
 
     50% {
-      background-color: yellow;
+      background-color: blue;
     }
 
     100% {
-      background-color: red;
+      background-color: cyan;
     }
   }
 
-  @keyframes blues {
+  /* @keyframes blues {
     from {
       background-color: blue;
     }
@@ -68,19 +68,9 @@
     to {
       background-color: lightcyan;
     }
-  }
+  } */
 
-  @keyframes turnRight {
-    from {
-      transform: rotate(0deg);
-      left: 0px;
-    }
-
-    to {
-      transform: rotate(360deg);
-      left: 200px;
-    }
-  }
+ 
 
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations */
 </style>

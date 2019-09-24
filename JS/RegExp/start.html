@@ -15,9 +15,9 @@
 
 
         //initilizing reg exp
-        const rgexp = /ab/;
+        const rgexp = /userSearchString/gi;
         //or
-        let rgExp = new RegExp('ab+c','g');
+        let rgExp = new RegExp(userSearchString,'i');
 
         let str = 'this is abrhamson';
         console.log(str.search(rgexp)); // 8
