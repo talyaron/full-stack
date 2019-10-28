@@ -67,12 +67,13 @@ router.delete('/deleteStudent',(req, res)=>{
         if (err) throw err;
         console.log(`students deleted: ${result.deletedCount}`);
         res.redirect(303, "/");
-      
+        db.close();
       })
       .catch(err => {
         console.log(err);
+        db.close();
       });
-      db.close();
+      
   });
 })
 
@@ -97,12 +98,13 @@ router.put('/updateAverage', (req,res)=>{
           res.send({error:'update error'})
         }
         
-      
+        db.close();
       })
       .catch(err => {
         console.log(err);
+        db.close();
       });
-      db.close();
+      
   });
 })
 
