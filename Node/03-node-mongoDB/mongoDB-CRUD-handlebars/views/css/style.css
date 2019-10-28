@@ -14,4 +14,9 @@ header {
 
 .average{
   padding: 20px 0px;
+  display: flex;
+}
+#avgOutput{
+  font-size: 1.6rem;
+    margin-left: 20px;
 }

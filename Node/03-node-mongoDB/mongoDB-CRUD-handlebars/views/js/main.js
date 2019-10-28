@@ -1,4 +1,5 @@
 function addStudent(e) {
+  console.log('addStudent')
   e.preventDefault();
 
   const formObj = e.target.elements;
@@ -33,6 +34,7 @@ function addStudent(e) {
 }
 
 function deleteStudent(e) {
+  console.log('deleteStudent')
   let studentObj = { studentId: e.target.id };
   fetch("/deleteStudent", {
     method: "DELETE",
@@ -48,6 +50,7 @@ function deleteStudent(e) {
 }
 
 function updateAverage(e, studentId) {
+  console.log('updateAverage')
   const grade = { grade: e.target.valueAsNumber, studentId };
 
   fetch("/updateAverage", {
@@ -76,6 +79,8 @@ function getAverage(e) {
       console.dir(res);
       res.json().then(resJson => {
         console.dir(resJson);
+        const {avg} = resJson;
+        document.getElementById('avgOutput').innerText = avg
       });
     })
     .catch(err => {

@@ -1,31 +1,43 @@
 const express = require("express");
 const router = express.Router();
 const ObjectId = require("mongodb").ObjectID;
-
+const assert = require("assert");
 const MongoClient = require("mongodb").MongoClient;
 const url = "mongodb://localhost:27017/sampleDB";
+const dbName = "sampleDB";
 
 router.get("/", (req, res) => {
-  MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
-    if (err) throw err;
+  console.log("--------------------");
+  console.log(req.headers["sec-fetch-mode"]);
 
-    const students = db.db("sampleDB").collection("students");
+  if (req.headers["sec-fetch-mode"] == "navigate") {
+    const client = new MongoClient(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
 
-    students
-      .find()
-      .sort({ insertTime: -1 })
-      .toArray()
-      .then(result => {
-        if (err) throw err;
+    client.connect(err => {
+      console.log("Connected successfully to database");
 
-        res.render("students", { students: result });
-        db.close();
-      })
-      .catch(err => {
-        console.log(err);
-        db.close();
-      });
-  });
+      const db = client.db(dbName);
+      const students = db.collection("students");
+
+      students
+        .find()
+        .sort({ insertTime: -1 })
+        .toArray((err, result) => {
+          console.log("Found records");
+
+          // res.status(301)
+          res.render("students", { students: result });
+        });
+
+      client.close();
+    });
+  } else {
+    console.log("end....");
+    res.end();
+  }
 });
 
 router.post("/addStudent", (req, res) => {
@@ -106,14 +118,18 @@ router.put("/updateAverage", (req, res) => {
 router.post("/getAverage", (req, res) => {
   console.log("get average");
 
-  MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
-    if (err) throw err;
+  const client = new MongoClient(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
-    console.log(db.getCollectionInfo())
+  client.connect(err => {
+    console.log("Connected successfully to database");
 
-    const students = db.db("sampleDB").collection("students");
+    const db = client.db(dbName);
+    const students = db.collection("students");
 
-    db.students
+    students
       .aggregate([
         {
           $group: {
@@ -122,24 +138,41 @@ router.post("/getAverage", (req, res) => {
           }
         }
       ])
-      .then(result => {
-        if (err) throw err;
-        console.log(result)
-        if (result.modifiedCount == 1) {
-          res.send({ average: 0 });
-        } else {
-          console.log(`some update error`);
-          res.send({ average: "error getting average 1" });
-        }
-
-        db.close();
+      .toArray()     
+      .then(avg=>{
+        let avgFloor = (avg[0].avg).toFixed(2);
+        res.send({avg:avgFloor})
       })
-      .catch(err => {
-        res.send({ average: "error getting average 2" });
-        console.log(err);
-        db.close();
-      });
+      
+      // .then(result => {
+      //   if (err) throw err;
+      //   console.log(result);
+      //   if (result.modifiedCount == 1) {
+      //     res.send({ average: 0 });
+      //   } else {
+      //     console.log(`some update error`);
+      //     res.send({ average: "error getting average 1" });
+      //   }
+
+       
+      // })
+      // .catch(err => {
+      //   res.send({ average: "error getting average 2" });
+      //   console.log(err);
+       
+      // });
+
+    client.close();
   });
+
+  // MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+  //   if (err) throw err;
+
+  //   console.log(db.getCollectionInfo());
+
+  //   const students = db.db("sampleDB").collection("students");
+
+  // });
 });
 
 module.exports = router;
