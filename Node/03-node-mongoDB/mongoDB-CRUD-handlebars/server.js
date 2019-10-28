@@ -18,9 +18,9 @@ if (arguments.init) {
     if (err) throw err;
     const dbo = db.db("sampleDB");
     const students = [
-      { name: "Micheal", average: 78 },
-      { name: "Motti", average: 90 },
-      { name: "Hana", average: 92 }
+      { name: "Micheal", last:"Boorg", average: 78 },
+      { name: "Motti", last:"Hill", average: 90 },
+      { name: "Hana",last:"Mount", average: 92 }
     ];
     dbo
       .collection("students")

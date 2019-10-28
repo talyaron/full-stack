@@ -90,8 +90,10 @@ router.put('/updateAverage', (req,res)=>{
       .then(result => {
         if (err) throw err;
         if(result.modifiedCount == 1){
+          console.log(`student grade was updated`)
           res.send({ok:"OK"});
         } else {
+          console.log(`some update error`)
           res.send({error:'update error'})
         }
         
