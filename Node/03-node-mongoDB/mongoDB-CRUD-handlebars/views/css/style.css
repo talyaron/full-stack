@@ -20,3 +20,7 @@ header {
   font-size: 1.6rem;
     margin-left: 20px;
 }
+
+.btn{
+  text-transform: uppercase;
+}

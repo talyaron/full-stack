@@ -41,10 +41,19 @@ router.get("/", (req, res) => {
 });
 
 router.post("/addStudent", (req, res) => {
-  MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
-    if (err) throw err;
-    let newStudent = req.body;
-    const students = db.db("sampleDB").collection("students");
+  let newStudent = req.body;
+
+  const client = new MongoClient(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+
+  client.connect(err => {
+    console.log("Connected successfully to database");
+
+    const db = client.db(dbName);
+    const students = db.collection("students");
+
     newStudent.insertTime = new Date().getTime();
     newStudent.average = "not set";
 
@@ -56,8 +65,10 @@ router.post("/addStudent", (req, res) => {
       })
       .catch(err => {
         console.log(err);
+        res.end();
       });
-    db.close();
+
+    client.close();
   });
 });
 
@@ -66,10 +77,16 @@ router.delete("/deleteStudent", (req, res) => {
 
   const { studentId } = req.body;
 
-  MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
-    if (err) throw err;
+  const client = new MongoClient(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
-    const students = db.db("sampleDB").collection("students");
+  client.connect(err => {
+    console.log("Connected successfully to database");
+
+    const db = client.db(dbName);
+    const students = db.collection("students");
 
     students
       .deleteOne({ _id: ObjectId(studentId) })
@@ -77,22 +94,27 @@ router.delete("/deleteStudent", (req, res) => {
         if (err) throw err;
         console.log(`students deleted: ${result.deletedCount}`);
         res.redirect(303, "/");
-        db.close();
       })
       .catch(err => {
         console.log(err);
-        db.close();
       });
+    client.close();
   });
 });
 
 router.put("/updateAverage", (req, res) => {
   const { grade, studentId } = req.body;
 
-  MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
-    if (err) throw err;
+  const client = new MongoClient(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
-    const students = db.db("sampleDB").collection("students");
+  client.connect(err => {
+    console.log("Connected successfully to database");
+
+    const db = client.db(dbName);
+    const students = db.collection("students");
 
     students
       .updateOne({ _id: ObjectId(studentId) }, { $set: { average: grade } })
@@ -105,13 +127,12 @@ router.put("/updateAverage", (req, res) => {
           console.log(`some update error`);
           res.send({ error: "update error" });
         }
-
-        db.close();
       })
       .catch(err => {
         console.log(err);
-        db.close();
+        res.send({ error: "update error" });
       });
+    client.close();
   });
 });
 
@@ -138,41 +159,14 @@ router.post("/getAverage", (req, res) => {
           }
         }
       ])
-      .toArray()     
-      .then(avg=>{
-        let avgFloor = (avg[0].avg).toFixed(2);
-        res.send({avg:avgFloor})
-      })
-      
-      // .then(result => {
-      //   if (err) throw err;
-      //   console.log(result);
-      //   if (result.modifiedCount == 1) {
-      //     res.send({ average: 0 });
-      //   } else {
-      //     console.log(`some update error`);
-      //     res.send({ average: "error getting average 1" });
-      //   }
-
-       
-      // })
-      // .catch(err => {
-      //   res.send({ average: "error getting average 2" });
-      //   console.log(err);
-       
-      // });
+      .toArray()
+      .then(avg => {
+        let avgFloor = avg[0].avg.toFixed(2);
+        res.send({ avg: avgFloor });
+      });
 
     client.close();
   });
-
-  // MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
-  //   if (err) throw err;
-
-  //   console.log(db.getCollectionInfo());
-
-  //   const students = db.db("sampleDB").collection("students");
-
-  // });
 });
 
 module.exports = router;
