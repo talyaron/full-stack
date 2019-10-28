@@ -1,7 +1,7 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const ObjectId = require("mongodb").ObjectID;
 const MongoClient = require("mongodb").MongoClient;
+
 const url = "mongodb://localhost:27017/sampleDB";
 const dbName = "sampleDB";
 
