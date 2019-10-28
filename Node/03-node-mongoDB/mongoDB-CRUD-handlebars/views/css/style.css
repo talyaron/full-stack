@@ -1,0 +1,13 @@
+body {
+  color: navy;
+}
+header {
+  background: #303f9f;
+  color: white;
+  text-align: center;
+  align-items: center;
+  font-size: 4rem;
+  vertical-align: middle;
+  margin-bottom: 30px;
+  padding: 55px;
+}
