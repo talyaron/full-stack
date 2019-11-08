@@ -1,6 +1,6 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 3000;
+// const express = require('express')
+// const app = express()
+// const port = process.env.PORT || 3001;
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
@@ -12,12 +12,12 @@ const arguments = yargs.argv._
 
 console.log(arguments)
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
 
 
 //connect mongoDB
@@ -28,13 +28,14 @@ const db = mongoose.connection;
 
 
 db.on('error', console.error.bind(console, 'connection error:'));
+
 db.once('open', () => {
     console.log('we are connected!');
 });
 
 //Define a schema
 const Schema = mongoose.Schema;
-const Students = new Schema({
+const StudentsSchema = new Schema({
     age: Number,
     average: Number,
     insertTime:Number,
@@ -57,10 +58,10 @@ const Students = new Schema({
 // Map
 
 // create collection (model) with it's schema
-const StudentsModel = mongoose.model('students', Students);
+const StudentsModel = mongoose.model('students', StudentsSchema);
 
 // Create an instance of model SomeModel
-const student = new StudentsModel({ name: 'Bonni', last:"Klide", age:23 });
+const student = new StudentsModel({ name: 'Ron', last:"Fibish", age:24 });
 
 // --------- insert -----------
 
@@ -87,11 +88,11 @@ student.save().then(doc=>{
 //  -------   CRUD ------------
 // https://mongoosejs.com/docs/queries.html
 
-StudentsModel.find({ name: 'Miky' }, (err, docs) => {
-    if (err) throw err;
-    console.log('found', docs)
-})
+// StudentsModel.find({ name: 'Miky' }, (err, docs) => {
+//     if (err) throw err;
+//     console.log('found', docs)
+// })
 
 
 
-app.listen(port, () => console.log(`server listening on port ${port}!!!`))
+// app.listen(port, () => console.log(`server listening on port ${port}!!!`))
