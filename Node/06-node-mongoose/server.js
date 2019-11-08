@@ -60,7 +60,9 @@ const Students = new Schema({
 const StudentsModel = mongoose.model('students', Students);
 
 // Create an instance of model SomeModel
-const student = new StudentsModel({ name: 'Miky', last:"Mouse", age:19 });
+const student = new StudentsModel({ name: 'Bonni', last:"Klide", age:23 });
+
+// --------- insert -----------
 
 // Save the new model instance, passing a callback
 // student.save(function (err) {
@@ -68,15 +70,21 @@ const student = new StudentsModel({ name: 'Miky', last:"Mouse", age:19 });
 //     console.log('saved')
 // });
 
-//save many;
-StudentsModel.insertMany([{name:'Donald', last:'Duck', age:14}, {name:'Pluto', last:'Dog', age:230}])
-.then(docs =>{
-    console.log(docs)
+student.save().then(doc=>{
+    console.log(doc);
 }).catch(err=>{
     console.log(err)
 })
 
-// CRUD
+//save many;
+// StudentsModel.insertMany([{name:'Donald', last:'Duck', age:14}, {name:'Pluto', last:'Dog', age:230}])
+// .then(docs =>{
+//     console.log(docs)
+// }).catch(err=>{
+//     console.log(err)
+// })
+
+//  -------   CRUD ------------
 // https://mongoosejs.com/docs/queries.html
 
 StudentsModel.find({ name: 'Miky' }, (err, docs) => {
