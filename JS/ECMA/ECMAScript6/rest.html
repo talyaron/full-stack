@@ -11,11 +11,9 @@
 <body>
     <script>
         function sum(...theArgs) {
+            console.dir(theArgs)
 
-            return theArgs.reduce((accumulator, current) => {
-                return accumulator + current;
-
-            });
+           
         }
 
         console.log(sum(2, 7, 8));
