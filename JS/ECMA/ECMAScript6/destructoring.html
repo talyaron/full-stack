@@ -12,9 +12,16 @@
     <script>
         let [a,b, ...rest] = [10,30, 32,33,34,35,36];
 
-        console.log(a)
-        console.log(b)
-        console.log(rest)
+        console.log(a);
+        console.log(b);
+        console.log(rest);
+
+        let obj = {workdays:['Sunday', 'Monday', 'Tuesday'], factory:'Chocolate Jony'};
+
+        let {workdays} = obj;
+
+        console.log(workdays)
+
     </script>
 
 </body>
