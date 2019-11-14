@@ -1,0 +1,24 @@
+<form method="POST" action="/addStudent">
+  <div class="form-row">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="First name" name='name'>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Last name" name='last'">
+    </div>
+    <div class=" col">
+      <input type="submit" class="btn btn-primary" value="add studnet">
+    </div>
+  </div>
+</form>
+<div class='average'>
+  <button class='btn btn-primary' onclick='getAverage(event)'>Get Average</button>
+  <div id="avgOutput"></div>
+</div>
+<ul class="list-group">
+  {{#each students}}
+  <li class="list-group-item"><button class="btn btn-danger" id={{this._id}}
+      onclick='deleteStudent(event)'>Delete</button> {{this.name}} {{this.last}} has average of <input type='number'
+      max=100 min=0 value={{this.average}} onchange='updateAverage(event, "{{this._id}}")' /> </li>
+  {{/each}}
+</ul>

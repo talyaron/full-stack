@@ -1,0 +1,19 @@
+{
+  "name": "mongodb-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "node server --init"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.1.0",
+    "mongodb": "^3.3.3",
+    "yargs": "^14.2.0"
+  }
+}
