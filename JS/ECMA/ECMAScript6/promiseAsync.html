@@ -24,7 +24,7 @@
                 .then(response => response.json())
                 .then(json => {
                     console.log(json)
-                    if (json.id == 45) {
+                    if (true) {
                         resolve(json)
                     } else {
                         reject('not 45!!!!')
@@ -33,6 +33,14 @@
                 })
         });
 
+        function multi(a){
+            return new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    resolve(a*2)
+                },1000)
+            })
+        }
+
 
         async function getCoupleApi() {
             try {
@@ -40,7 +48,9 @@
                 console.log(data)
                 let data2 = await getSecondApi;
                 console.log(data2)
-                console.log(`There are two tasks, "${data.title}" and "${data2.title}".`)
+
+                let data3 = await multi(10);
+                console.log(`There are two tasks, "${data.title}" and "${data2.title}". ${data3}`)
             } catch (err) {
                 console.error(err)
             }
