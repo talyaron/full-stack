@@ -23,18 +23,37 @@
             fetch('https://jsonplaceholder.typicode.com/todos/2')
                 .then(response => response.json())
                 .then(json => {
-                    // console.log(json)
-                    resolve(json)
+                    console.log(json)
+                    if (true) {
+                        resolve(json)
+                    } else {
+                        reject('not 45!!!!')
+                    }
+
                 })
         });
 
-        
-        async function getCoupleApi() {
-            let data = await getSomeApi;
-            console.log(data)
-            let data2 = await getSecondApi;
+        function multi(a){
+            return new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    resolve(a*2)
+                },1000)
+            })
+        }
 
-             console.log(`There are two tasks, "${data.title}" and "${data2.title}".`)
+
+        async function getCoupleApi() {
+            try {
+                let data = await getSomeApi;
+                console.log(data)
+                let data2 = await getSecondApi;
+                console.log(data2)
+
+                let data3 = await multi(10);
+                console.log(`There are two tasks, "${data.title}" and "${data2.title}". ${data3}`)
+            } catch (err) {
+                console.error(err)
+            }
         }
 
         getCoupleApi();

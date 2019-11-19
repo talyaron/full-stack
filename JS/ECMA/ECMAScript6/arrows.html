@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ES6-arrows</title>
 </head>
+
 <body>
     <script>
-        let x = toDouble => toDouble*2;
+        //anonymous function
+        let anonimosFun = function (a) {
+            return a + 2;
+        }
 
-        alert(x(2))
-        </script>
-    
+        let arrowFunction = (a) => {
+            return a + 2;
+        }
+
+        let x = toDouble => toDouble * 2;
+
+        console.log(x(2))
+
+        //arrow function do not create its own this;
+
+
+        let user = {
+            name: "moses",
+            moses1: () => {
+                console.log(`arrow ${this.name}`); // no 'this' binding here 
+            },
+            moses2() {
+                console.log(`anonymous ${this.name}`); // 'this' binding exist 
+            }
+        };
+        user.moses1();
+        user.moses2();
+
+
+
+
+
+
+    </script>
+
 </body>
+
 </html>
