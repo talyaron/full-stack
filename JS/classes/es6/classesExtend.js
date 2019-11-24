@@ -23,8 +23,9 @@ class Dog extends Pets {
     }
 }
 
-var poopy = new Dog('Poppy', "dogs", "medium");
+var puppy = new Dog('Puppy', "dogs", "medium");
 
-poopy.tellDogName();
-poopy.tellSpecies();
-console.dir(poopy)
+puppy.tellDogName();
+puppy.tellSpecies();
+console.dir(puppy);
+console.dir(Pets)
