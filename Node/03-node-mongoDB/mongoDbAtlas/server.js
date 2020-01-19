@@ -4,7 +4,7 @@ const port = 3000
 const bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 
-var url = "mongodb+srv://talyaron:Yuva1))))@tal-test1-m39if.mongodb.net/test?retryWrites=true";
+var url = "mongodb+srv://talyaron:<password>@tal-test1-m39if.mongodb.net/test?retryWrites=true";
 
 app.use(express.static('public'));
 

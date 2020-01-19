@@ -32,7 +32,7 @@
     // var hiElm = document.getElementById('hi')
     function getPromiseFromDB() {
         console.time('time')
-        return myPromise = new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
 
             console.log("going to DB......")
             DB.child('testPromise').once('value', function (testDB) {
@@ -49,10 +49,24 @@
 
     }
 
+    let stop = new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve('go ahead!')
+        },7000)
+    })
+
     async function asyncTest() {
         console.log('async function async3: waiting to DB results');
         var result = await getPromiseFromDB();
-        console.log('async function result:', result);
+        console.log('1111', result);
+       
+        var result = await getPromiseFromDB();
+        console.log('22222', result);
+
+        var stop2 = await stop;
+        var result = await getPromiseFromDB();
+        console.log('33333', result);
+
         console.timeEnd('time')
 
     }
