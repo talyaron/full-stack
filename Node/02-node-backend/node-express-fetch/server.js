@@ -58,5 +58,5 @@ app.delete('/deleteMember', (req, res) => {
 let port = process.env.PORT || 3000;
 
 app.listen(port, function () {
-    console.log('Server liten on port', port)
+    console.log('Server listen on port', port)
 })
