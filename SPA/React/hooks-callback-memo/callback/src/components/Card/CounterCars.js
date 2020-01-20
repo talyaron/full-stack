@@ -11,5 +11,5 @@ function CounterCars(props){
     )
 }
 
-export default React.memo(CounterCars);
-// export default CounterCars;
+// export default React.memo(CounterCars);
+export default CounterCars;
