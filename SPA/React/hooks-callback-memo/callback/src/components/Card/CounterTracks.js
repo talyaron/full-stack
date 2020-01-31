@@ -10,5 +10,5 @@ function CounterTracks(props){
     )
 }
 
-// export default React.memo(CounterTracks);
-export default CounterTracks;
+export default React.memo(CounterTracks);
+// export default CounterTracks;

@@ -8,5 +8,5 @@ function Counter(props){
     )
 }
 
-// export default React.memo(Counter);
-export default Counter;
+export default React.memo(Counter);
+// export default Counter;

@@ -12,7 +12,7 @@ import './Card.css'
 
 
 //this "trick" helps create as many components as you wish
-let counters = new Array(400).fill('1');
+let counters = new Array(1).fill('1');
 
 function Card() {
    

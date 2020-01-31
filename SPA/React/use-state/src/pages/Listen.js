@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const firebase = require("firebase");
 require("firebase/firestore");
@@ -22,22 +22,20 @@ function Listen() {
 
     const [power, setPower] = useState(0)
 
-    useEffect(() => {
-        return listenToDB();
-    }, [])
+    
 
 
-    function listenToDB() {
-        return DB.collection('tests').doc('test1').onSnapshot(docDB => {
+    // function listenToDB() {
+    //     return DB.collection('tests').doc('test1').onSnapshot(docDB => {
 
-            console.log(docDB.data().power)
-            setPower(docDB.data().power)
+    //         console.log(docDB.data().power);
+    //         setPower(docDB.data().power);
 
-        })
-    }
+    //     })
+    // }
 
     return (
-        <h1>Power is: {power} watts</h1>
+        <h1>Power: {power} watts</h1>
     )
 }
 
