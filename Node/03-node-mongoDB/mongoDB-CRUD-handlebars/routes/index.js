@@ -2,7 +2,7 @@ const router = require("express").Router();
 const ObjectId = require("mongodb").ObjectID;
 const MongoClient = require("mongodb").MongoClient;
 
-const url = "mongodb://localhost:27017/sampleDB";
+const url = "mongodb+srv://theshlomo12:HRXuBBOng6gcjHGT@theshlomo12-ys6tb.mongodb.net/test?retryWrites=true&w=majority";
 const dbName = "sampleDB";
 
 router.get("/", (req, res) => {

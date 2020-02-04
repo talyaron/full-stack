@@ -13,7 +13,7 @@ const arguments = yargs.argv;
 
 if (arguments.init) {
   const MongoClient = require("mongodb").MongoClient;
-  const url = "mongodb://localhost:27017/sampleDB";
+  const url = "mongodb+srv://theshlomo12:HRXuBBOng6gcjHGT@theshlomo12-ys6tb.mongodb.net/test?retryWrites=true&w=majority";
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     const dbo = db.db("sampleDB");
