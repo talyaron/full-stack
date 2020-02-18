@@ -12,7 +12,6 @@ let users = [
     { id: 3, name: "Reot", age: 18 },
     { id: 4, name: 'Daraia', age: 19 }
 ]
-
 app.get('/getMembers', (req, res) => {
     res.send(users)
 })
