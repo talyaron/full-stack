@@ -1,0 +1,34 @@
+.main {
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: palegoldenrod;
+}
+
+.button {
+    background-color: teal;
+    color: white;
+    padding: 10px 30px;
+    width: fit-content;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+.button:hover{
+    box-shadow: 3px 3px 9px gray;
+}
+
+.carousel {
+    position: relative;
+    background-color: palegoldenrod;
+    width: 200vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+    transition: all 1s ease-in-out;
+    right: 0vw;
+}
