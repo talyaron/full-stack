@@ -1,8 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { changeCounter } from '../redux/actions'
 
-export default function Comp2(props){
+export default function Comp2(props) {
+    const dispatch = useDispatch();
 
-    const{sumHandler} = props;
+    const { sumHandler } = props;
 
-    return(<button onClick={()=>{sumHandler(-1)}}>remove</button>)
+    return (<div>
+        <button onClick={() => { sumHandler(-1) }}>remove</button>
+        <button onClick={() => { dispatch(changeCounter(-1)) }}>REMOVE FROM STATE</button>
+    </div>
+    )
 }
