@@ -4,6 +4,7 @@ import './App.css';
 import Comp1 from './view/comp1';
 import Comp2 from './view/comp2';
 import Sum from './view/Sum';
+import Multi from './view/Multi';
 
 function App() {
   const [counter, setCounter] = useState(1)
@@ -15,6 +16,7 @@ function App() {
       <Sum counter={counter}/>
      <Comp2 sumHandler={sumHandler} />
        <Comp1 sumHandler={sumHandler} />
+       <Multi />
     </div>
   );
 }

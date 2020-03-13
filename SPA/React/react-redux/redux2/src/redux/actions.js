@@ -1,4 +1,4 @@
-import {CHANGE_COUNTER} from './actionTypes';
+import {CHANGE_COUNTER, MULTIPLE} from './actionTypes';
 
 export const changeCounter = (change) => {
 	return {
@@ -6,3 +6,10 @@ export const changeCounter = (change) => {
 		payload: change
 	};
 };
+
+export const multiple = (multi)=>{
+	return {
+		type: MULTIPLE,
+		payload: multi
+	};
+}
