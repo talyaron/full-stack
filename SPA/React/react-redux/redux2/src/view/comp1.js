@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import {useSelector, useDispatch } from 'react-redux';
 import {changeCounter} from '../redux/actions'
 
 export default function Comp1(props){
     const{sumHandler} = props;
-    
+    const state = useSelector(state=>state)
     const dispatch = useDispatch();
 
     useEffect(()=>{
