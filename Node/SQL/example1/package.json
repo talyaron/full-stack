@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "connect": "nodemon server-connection.js",
-    "pool": "nodemon server-pooling.js"
+    "pool": "nodemon server-pooling.js",
+    "rest": "nodemon server-connection-rest.js"
   },
   "keywords": [],
   "author": "",
