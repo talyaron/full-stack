@@ -1,0 +1,1 @@
+call getMessagesByAuthor(2)
