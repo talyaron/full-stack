@@ -18,13 +18,13 @@ try {
 
         connection.query('SELECT * FROM schema1.user', (error, result, fields) => {
             if (error) throw error;
-            console.log('results:', result[0]);
-            console.log('fields:', fields[0]);
+            console.log('results:', result);
+            console.log('fields:', fields);
             
         })
         connection.query("select * from schema1.user where username = 'tal2'", (error, result, fields) => {
             if (error) throw error;
-            console.log('results specific:', result[0]);
+            console.log('results specific:', result);
            
             
         })
