@@ -53,7 +53,7 @@ if (arguments.includes('test')) {
 
 
 const newNames = new Promise((resolve, reject) => {
-    fetch('http://names.drycodes.com/300?separator=space')
+    fetch('http://names.drycodes.com/60?separator=space')
         .then(res => { res.json().then(data => { 
             let names = []
             data.forEach(fullname=>{
@@ -69,7 +69,10 @@ const newFilms = new Promise((resolve, reject) => {
 })
 function query1(name, connection) {
     return new Promise((resolve, reject) => {
-        connection.query(`INSERT INTO authors (name,surename, password) VALUES ('${name.name}','${name.surename}' , '${name.name}${Math.floor(Math.random() * 1000)}');`, (error, result, fields) => {
+        const age = Math.floor((Math.random()*80)+20);
+        console.log('age....', age)
+
+        connection.query(`INSERT INTO authors (name,surename, password, age) VALUES ('${name.name}','${name.surename}' , '${name.name}${Math.floor(Math.random() * 1000)}', ${Math.floor((Math.random()*80+20))});`, (error, result, fields) => {
             if (error) reject(error);
            
             resolve()
@@ -81,7 +84,7 @@ function query1(name, connection) {
 }
 
 
-if (arguments.includes('addWriters')) {
+if (arguments.includes('authors')) {
 
     pool.getConnection((err, connection) => {
         if (err) throw err;
@@ -128,7 +131,7 @@ const newMessages = new Promise((resolve, reject)=>{
 
 function addMessages(message, connection) {
     return new Promise((resolve, reject) => {
-        connection.query(`INSERT INTO messages (author_id, message,date) VALUES ('${Math.floor(Math.random()*100)}','${message}' , '2020-03-31');`, (error, result, fields) => {
+        connection.query(`INSERT INTO messages (author_id, message,date) VALUES ('${Math.floor((Math.random()*100))}','${message}' , '2020-03-31');`, (error, result, fields) => {
             if (error) reject(error);
            
             resolve()
@@ -139,7 +142,7 @@ function addMessages(message, connection) {
     })
 }
 
-if (arguments.includes('addMessages')) {
+if (arguments.includes('messages')) {
 
     pool.getConnection((err, connection) => {
         if (err) throw err;
