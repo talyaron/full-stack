@@ -1,37 +1,52 @@
-import React, { useEffect, useState } from 'react';
-
+import React  from 'react';
 
 import './App.css';
 
-import { login, logout, listenToLogin } from './functions/firebase';
+//components
+import Login from './view/Login';
+import Feed from './view/Feed';
 
-function App () {
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-  const [isShow, setIsShow] = useState(false);
-  const [img, setImg] = useState('')
- 
-  useEffect(()=>{
-    listenToLogin(setIsShow, setImg)
-  },[])
-  
+function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Login</Link>
+            </li>
+            <li>
+              <Link to="/feed">Feed</Link>
+            </li>
+            
+          </ul>
+        </nav>
 
-    return (
-      <div className="page">
-        <h1>Pinstegram</h1>
-        <h2>Login</h2>
-        <form onSubmit={login}>
-
-          <button type='submit'>Login to Google</button>
-        </form>
-        <hr />
-        <button onClick={logout}>Logout</button>
-        {isShow ?
-          <img id='userImg' src={img} />
-          : null
-        }
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/">
+            <Login />
+          </Route>
+          <Route path="/feed">
+            <Feed />
+          </Route>
+         
+        </Switch>
       </div>
-    )
-  
+    </Router>
+  );
 }
+
+
+
+
 
 export default App;
