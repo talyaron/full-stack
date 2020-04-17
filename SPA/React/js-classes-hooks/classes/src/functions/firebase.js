@@ -48,7 +48,7 @@ export function login(e) {
 }
 
 export function listenToLogin(props) {
-    const {picHandler} = props;
+    const {handleShowPicture} = props;
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             console.log(user)
@@ -57,13 +57,13 @@ export function listenToLogin(props) {
 
             if (photoURL) {
                 
-                picHandler(true, photoURL)
+                handleShowPicture(true, photoURL)
                
             }
             console.log('User is signed in.');
         } else {
             console.log(' No user is signed in.');
-            picHandler(false, '')
+            handleShowPicture(false, '')
         }
     });
 }
