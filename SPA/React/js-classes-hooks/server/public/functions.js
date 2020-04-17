@@ -12,9 +12,9 @@ function register(e) {
     }).then(res => res.json()
         .then(res2 => {
             console.log(res2)
-            const {success, redirect} = res2;
-            if(success){
-                if(redirect){
+            const { success, redirect } = res2;
+            if (success) {
+                if (redirect) {
                     window.location.replace(redirect);
                 }
             }
@@ -37,13 +37,13 @@ function login(e) {
     //     console.error(error)
     //   });
 
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(function (result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
         // ...
-      }).catch(function(error) {
+    }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -54,21 +54,31 @@ function login(e) {
 
         console.error(error)
         // ...
-      });
-      
+    });
+
 }
 
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         console.log(user)
-     console.log( 'User is signed in.');
+        const { photURL } = user;
+        console.log(typeof photURL)
+
+        if (photoURL) {
+            const userImg = document.getElementById('userImg')
+            userImg.style.display = 'block';
+            userImg.src = photoURL
+        }
+        console.log('User is signed in.');
     } else {
         console.log(' No user is signed in.');
+        const userImg = document.getElementById('userImg')
+        userImg.style.display = 'none';
     }
-  });
+});
 
 
- function logout() {
+function logout() {
 
     firebase.auth().signOut().then(function () {
         console.info('Logout succesfull')
@@ -77,4 +87,4 @@ firebase.auth().onAuthStateChanged(function(user) {
     });
 
 }
-  
+
