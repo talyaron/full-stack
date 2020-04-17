@@ -61,8 +61,8 @@ function login(e) {
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         console.log(user)
-        const { photURL } = user;
-        console.log(typeof photURL)
+        const { photoURL } = user;
+        console.log(typeof photoURL)
 
         if (photoURL) {
             const userImg = document.getElementById('userImg')
