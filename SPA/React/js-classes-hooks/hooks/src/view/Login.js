@@ -21,7 +21,7 @@ function Login(){
           <button type='submit'>Login to Google</button>
         </form>
         <hr />
-        <button onClick={logout}>Logout</button>
+       
         {isShow ?
           <img id='userImg' src={img} />
           : null

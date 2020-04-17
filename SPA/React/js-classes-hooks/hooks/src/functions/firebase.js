@@ -47,7 +47,7 @@ export function login(e) {
 
 }
 
-export function listenToLogin(setIsShow, setImg) {
+export function listenToLogin(setIslogged) {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -55,17 +55,16 @@ export function listenToLogin(setIsShow, setImg) {
             const { photoURL } = user;
             console.log(typeof photoURL)
 
-            if (photoURL) {
+            setIslogged(true);
 
-                setIsShow(true);
-                setImg(photoURL)
+           
 
-            }
+            
             console.log('User is signed in.');
         } else {
             console.log(' No user is signed in.');
-            setIsShow(false);
-            setImg('')
+            setIslogged(false);
+           
         }
     });
 }
