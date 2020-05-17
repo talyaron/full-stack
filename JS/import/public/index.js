@@ -1,3 +1,5 @@
-import {pi} from './math.js'
+import {pi,circumference} from './math.js'
 
-console.log(`Pi is ${pi()}`)
+let r = 2
+
+console.log(`Pi is ${pi()} and with radius ${r} the circumference is ${circumference(r)}`)
