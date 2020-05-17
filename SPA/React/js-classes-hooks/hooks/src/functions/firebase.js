@@ -47,10 +47,11 @@ export function login(e) {
 
 }
 
-export function listenToLogin(setIslogged) {
+export function listenToLogin(setIslogged, setUser) {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
+            setUser(user)
             console.log(user)
             const { photoURL } = user;
             console.log(typeof photoURL)

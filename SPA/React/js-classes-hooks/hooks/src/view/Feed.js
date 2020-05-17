@@ -3,8 +3,9 @@ import './Feed.css';
 
 import {DB} from '../functions/firebase'
 
-function Feed(){
+function Feed(props){
     const [messages, setMessages] = useState([]);
+    const {user} = props
 
     useEffect(()=>{
         listenToMessages(setMessages)
@@ -19,11 +20,11 @@ function Feed(){
             <div className='wrapper'>
                 {
                     messages.map((message,index)=>{
-                        return(<p key={index}>{message.message}</p>)
+                        return(<p key={index}>{message.message} ({message.name})</p>)
                     })
                 }
             </div>
-            <form className='input' onSubmit={sendMessage}>
+            <form className='input' onSubmit={(e)=>{sendMessage(e, user)}}>
                 <input type='text' placeholder='enter text' name='message' />
                 <input type='submit' value='send' />
             </form>
@@ -33,14 +34,15 @@ function Feed(){
 
 export default Feed;
 
-function sendMessage(e){
+function sendMessage(e, user){
     e.preventDefault();
-
+    const name = user.displayName;
+  
     const message = e.target.elements.message.value;
     DB
-    .collection('messages').add({message})
-    .then(()=>{
-        console.log('Mesager was send to DB');
+    .collection('messages').add({message, name})
+    .then((res)=>{
+        console.log('Mesager was send to DB', res.id);
         
     
     })

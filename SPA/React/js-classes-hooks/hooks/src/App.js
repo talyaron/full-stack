@@ -21,10 +21,11 @@ function App() {
 
 
   const [isLogged, setIslogged] = useState(false);
+  const [user, setUser] = useState({})
 
 
   useEffect(() => {
-    listenToLogin(setIslogged)
+    listenToLogin(setIslogged,setUser)
   }, [])
 
   return (
@@ -57,7 +58,7 @@ function App() {
           </Route>
           <Route path="/feed">
             {isLogged ? (
-              <Feed />
+              <Feed user={user} />
             ) : (
                 <Redirect to="/" />
               )
