@@ -1,26 +1,79 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+
 import './App.css';
 
+//components
+import Login from './view/Login';
+import Feed from './view/Feed';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
+
+import { listenToLogin, logout } from './functions/firebase';
+
 function App() {
+
+
+
+  const [isLogged, setIslogged] = useState(false);
+  const [user, setUser] = useState({})
+
+
+  useEffect(() => {
+    listenToLogin(setIslogged,setUser)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Login</Link>
+            </li>
+            <li>
+              <Link to="/feed">Feed</Link>
+            </li>
+
+          </ul>
+          <button onClick={logout}>Logout</button>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route exact={true} path="/">
+            {isLogged ? (
+              <Redirect to="/feed" />
+            ) : (
+                <Login />
+              )
+            }
+
+          </Route>
+          <Route path="/feed">
+            {isLogged ? (
+              <Feed user={user} />
+            ) : (
+                <Redirect to="/" />
+              )
+            }
+
+          </Route>
+
+        </Switch>
+      </div>
+    </Router>
   );
 }
+
+
+
+
 
 export default App;
