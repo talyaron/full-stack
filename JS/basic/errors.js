@@ -53,6 +53,6 @@ function readData() {
 
 readData();
 
-console.log('test')
+console.log('test');
 
 
