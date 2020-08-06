@@ -16,7 +16,8 @@ import { UserContext } from './user'
 
 export default function App() {
 
-  const [isTrue, setIsTrue] = useState(true)
+  const [isTrue, setIsTrue] = useState(true);
+  const [colorVal, setColorVal] = useState('red')
 
   return (
     <Router>
@@ -37,7 +38,7 @@ export default function App() {
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <UserContext.Provider value={{isTrue, setIsTrue}}>
+        <UserContext.Provider value={{isTrue, setIsTrue,colorVal, setColorVal}}>
           <Switch>
 
             <Route path="/about">
