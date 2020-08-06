@@ -3,7 +3,9 @@ import {UserContext} from '../user'
 
 function Home() {
 
-    const { isTrue, setIsTrue } = useContext(UserContext);
+    const {trust } = useContext(UserContext);
+    const { isTrue} = trust;
+
     return <h2>Home {JSON.stringify(isTrue)}</h2>;
 }
 
