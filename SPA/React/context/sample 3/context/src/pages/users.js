@@ -4,13 +4,13 @@ import { UserContext } from '../user';
 
 function Users() {
 
-    const { isTrue, setIsTrue,colorVal, setColorVal } = useContext(UserContext);
+    const { isTrue, setIsTrue,colorVal, setColorVal, name } = useContext(UserContext);
     console.log(isTrue)
     return (
         <div onClick={() => { setIsTrue(!isTrue); setColorVal(getRandomColor()) }} style={{background:colorVal}}>
             <h2>Users</h2>
             <h3>{JSON.stringify(isTrue)}</h3>
-            <p>sdg</p>
+            <p>{name}</p>
         </div>
     );
 }
