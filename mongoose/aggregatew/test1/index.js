@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+app.use(express.static('public'))
+
 const mongoose = require('mongoose');
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -17,22 +19,37 @@ const Car = mongoose.model('Car', {
     price: Number
 });
 
-const bmw = new Car({ name: 'bmw', price: 1400 });
-// bmw.save().then(() => console.log('meow2'));
+const bmw = new Car({ name: 'renult', price: 1230 });
+// bmw.save().then(() => console.log('meow3'));
 
-const filter = { price: { $gte: 1300, $lte:1500} };
-(async () => {
-
+app.get('/api/geroup', async (req, res)=>{
     let docs = await Car.aggregate([
-        { $match: filter },
-        {$group:{
-            _id:null,
-            total: {$sum:'$price'}
-        }}
+        { $match: {} },
+        {
+            $group: {
+                _id: '$name',
+               carTypes:{$push:"$$ROOT"}
+            }
+        }
     ])
 
-    console.log(docs)
-})()
+    res.send(docs)
+})
+// const filter = {};
+// (async () => {
+
+//     let docs = await Car.aggregate([
+//         { $match: filter },
+//         {
+//             $group: {
+//                 _id: '$name',
+//                carTypes:{$push:"$$ROOT"}
+//             }
+//         }
+//     ])
+
+//     console.log(docs)
+// })()
 
 
 
@@ -93,4 +110,5 @@ app.put('/api/update-color', (req, res) => {
 })
 
 
-
+const port = process.env.PORT || 3000;
+app.listen(port, ()=>console.log('server listen on port ', port))
