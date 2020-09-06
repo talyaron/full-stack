@@ -10,13 +10,23 @@
 
 <body>
     <script>
-        let x = new Set([1, 2, 3, 3, 4, 5]);
+        let x = new Set([1, 2, 3, 3, 4, 5, 77]);
+
 
         console.log(x);
-        console.dir(x);
         x.add(5);
-         console.log(x);
-         console.log(x[2]);
+        console.log(x);
+        x.delete(1);
+        console.log(x);
+        console.log(x[2]);
+
+
+
+        for (let item of x.keys()) console.log(item);
+        for (let itewm of x.values()) console.log(itewm);
+
+        let arr = [...x]
+        console.log(arr)
     </script>
 </body>
 

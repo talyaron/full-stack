@@ -11,7 +11,8 @@
 <body>
     <h1 id='hi'>H1</h1>
 </body>
-<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
 <script>
 
 
@@ -22,67 +23,64 @@
         databaseURL: "https://delibtests.firebaseio.com",
         projectId: "delibtests",
         storageBucket: "delibtests.appspot.com",
-        messagingSenderId: "612739213308"
+        messagingSenderId: "612739213308",
+        appId: "1:612739213308:web:0fbf387e2c9919d8"
     };
     firebase.initializeApp(config);
-    var DB = firebase.database().ref('tests');
+    const DB = firebase.firestore();
 
 
 
-    // var hiElm = document.getElementById('hi')
+   
     function getPromiseFromDB() {
-        console.time('time')
-        return myPromise = new Promise((resolve, reject) => {
+      
+        return new Promise((resolve, reject) => {
 
-            console.log("going to DB......")
-            DB.child('testPromise').once('value', function (testDB) {
-                console.log('Value from DB....', testDB.val())
-                var success = 'Success: Got the Value from DB';
-                var errorP = "noppppp"
-                if (testDB.val()) {
-                    resolve(success);
+           
+            DB.collection('tests').doc('promiseTest').get().then(testDB=> {
+               
+                if(testDB.exists){
+
+                    resolve(testDB.data().aa);
                 } else {
-                    reject(errorP)
+                    reject('data dosnt exists')
                 }
             })
         })
 
     }
 
-    async function asyncTest() {
-        console.log('async function async3: waiting to DB results');
-        var result = await getPromiseFromDB();
-        console.log('async function result:', result);
-        console.timeEnd('time')
+    function getSecondPromiseFromDB(docName) {
+       
+        return new Promise((resolve, reject) => {
 
+         
+            DB.collection('tests').doc(docName).get().then(testDB=> {
+            
+                if(testDB.exists){
+
+                    resolve(testDB.data().result);
+                } else {
+                    reject('data dosnt exists')
+                }
+            })
+        })
+
+    }
+
+    
+    async function asyncTest() {
+       
+       let docName = await getPromiseFromDB();
+     
+       let result = await getSecondPromiseFromDB(docName)
+
+       
     }
 
     asyncTest();
 
-    function getSumOfChildren(parent) {
-
-        return sumChildren = new Promise((resolve, reject) => {
-            DB.child(`users/${parent}/numberOfChildren`).once('value').then(numChildDB => {    
-                if (numChildDB.val()) {
-                    resolve(numChildDB.val());
-                } else {
-                    reject(0)
-                }
-            })
-        })
-    }
-
-    async function getChildrensFromDB() {
-        console.time('children');
-        let sumChildren = 0;
-        sumChildren += await getSumOfChildren('Roni');
-        sumChildren += await getSumOfChildren('moti');
-        console.log(sumChildren);
-        console.timeEnd('children')
-
-    }
-
-    getChildrensFromDB();
+    
 
 </script>
 

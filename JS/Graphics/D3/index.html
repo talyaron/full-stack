@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates labore corporis saepe nemo asperiores
+        laudantium voluptate doloribus dicta maiores facere minus ab, ullam repudiandae ut esse ratione alias eveniet
+        in.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates labore corporis saepe nemo asperiores
+        laudantium voluptate doloribus dicta maiores facere minus ab, ullam repudiandae ut esse ratione alias eveniet
+        in.</p>
+
+    <svg>
+        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+    </svg>
+
+    <script>
+        var paragraphs = document.getElementsByTagName("p");
+        // for (var i = 0; i < paragraphs.length; i++) {
+        //     var paragraph = paragraphs.item(i);
+        //     paragraph.style.setProperty("color", "blue", null);
+        // }
+
+        d3.selectAll("p").style("color", function () {
+            return "hsl(" + Math.random() * 360 + ",100%,50%)";
+        })
+            .data([40, 8, 15, 16, 23, 42])
+            .style("font-size", d => { return d + "px"; })
+            .enter().append("p")
+            .text(d => { return "I’m number " + d + "!"; });
+
+        d3.select("body").transition()
+            .style("background-color", "lightpink");
+        
+        
+        const circles = d3.selectAll("circle");
+
+        console.dir(circles)
+
+
+        circles.style("fill", "steelblue");
+        circles.attr("r", 200);
+    </script>
+</body>
+
+</html>
