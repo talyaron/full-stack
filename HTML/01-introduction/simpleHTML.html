@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>simple HTML</title>
-    </head>
-    <body>
-        <p>Hello HTML</p>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .main{
+        border:1px solid gray;
+        position: relative;
+    }
 
+    /* div which is a direct child of the '.main' */
+    .main>div{
+        border:2px dashed pink;
+        width: 50%;
+    }
+
+    /* img which is a direct child of a div which is a direct child of the '.main' */
+    .main>div>img{
+        width: 100%;
+    }
+
+     /* p which is a direct child of a div which is a direct child of the '.main' */
+    .main>div>p{
+        font-size: 2rem;
+    }
+
+    .rightArticle{
+        position: absolute;
+        top:0px;
+        left:50%;
+    }
+
+    .leftArticle>h1{
+        color:red
+    }
+
+    .rightArticle>h1{
+        color: blue;
+    }
+</style>
+<body>
+      
+        <div class="leftArticle">
+            <h1>some tilte</h1>
+            <img src='file:///home/tal/Downloads/tt/project1Blog/project1Blog/pics/chainis2.jpg'>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsam pariatur cupiditate accusamus doloremque consequatur corporis, rerum minima laudantium doloribus omnis accusantium commodi, necessitatibus tempore! Itaque nam ipsa reiciendis quod.</p>
+        
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsam pariatur cupiditate accusamus doloremque consequatur corporis, rerum minima laudantium doloribus omnis accusantium commodi, necessitatibus tempore! Itaque nam ipsa reiciendis quod.</p>
+        
+        </div>
+        <div class="rightArticle">
+            <h1>some tilte</h1>
+            <img src='file:///home/tal/Downloads/tt/project1Blog/project1Blog/pics/chainis1.jpg'>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsam pariatur cupiditate accusamus doloremque consequatur corporis, rerum minima laudantium doloribus omnis accusantium commodi, necessitatibus tempore! Itaque nam ipsa reiciendis quod.</p>
+        
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsam pariatur cupiditate accusamus doloremque consequatur corporis, rerum minima laudantium doloribus omnis accusantium commodi, necessitatibus tempore! Itaque nam ipsa reiciendis quod.</p>
+        
+        </div>
+    </div>
+</body>
 </html>

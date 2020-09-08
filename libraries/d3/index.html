@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum impedit perferendis eius! Non consectetur fugiat
+        ducimus quos at soluta quam nesciunt cumque nam ratione repellendus architecto maxime, recusandae quae beatae!
+    </p>
+    <p>dfsdfsdf</p>
+    <p>Go</p>
+    <p>dfsdfsdf</p>
+    <p>Go</p>
+    <div class="test">Gooooo</div>
+    <div class="test">Goooo3o</div>
+    <script>
+
+
+        //update exiting nodes
+        const p = d3.select("body")
+            .selectAll("p")
+            .data([4, 8, 15, 16, 14, 42])
+            .text(d => `I’m number ${d}`);
+
+        //add new nodes
+        p.data([4, 2, 15, 16, 14, 42, 66, 88])
+            .enter().append('p')
+            .text(d => `Wooo:${d}`);
+
+      
+            //dynamic change color
+        d3.selectAll("p").style("color", function () {
+            return "hsl(" + Math.random() * 360 + ",100%,50%)";
+        });
+
+        //remove elements
+        // p.remove();
+
+        d3.selectAll('.test').data([56,34]).style('font-size',d=>`${d}px`)
+    </script>
+</body>
+
+</html>

@@ -22,93 +22,24 @@ const Car = mongoose.model('Car', {
 const bmw = new Car({ name: 'renult', price: 1230 });
 // bmw.save().then(() => console.log('meow3'));
 
-app.get('/api/geroup', async (req, res)=>{
+app.get('/api/geroup', async (req, res) => {
     let docs = await Car.aggregate([
-        { $match: {} },
+        { $match: {  } },
         {
             $group: {
                 _id: '$name',
-               carTypes:{$push:"$$ROOT"}
+                carTypes: { $push: "$$ROOT" },
+                sum: { $sum: '$price' }
             }
+        },
+        {$project:
+            {'sum':true,'carTypes':true}
         }
     ])
 
     res.send(docs)
 })
-// const filter = {};
-// (async () => {
-
-//     let docs = await Car.aggregate([
-//         { $match: filter },
-//         {
-//             $group: {
-//                 _id: '$name',
-//                carTypes:{$push:"$$ROOT"}
-//             }
-//         }
-//     ])
-
-//     console.log(docs)
-// })()
-
-
-
-
-app.get("/api/get-all-products", function (req, res) {
-    db.collection("products").find({}, (err, docs) => {
-        const results = []
-        docs.each(function (err, doc) {
-            console.log(doc);
-
-            if (doc) {
-                results.push(doc)
-            }
-            else {
-                res.send(results);
-            }
-        });
-    });
-});
-
-app.get('/api/get-all-lipstick', (req, res) => {
-    db.collection('products').find({ type: 'lipstick' }, (err, docs) => {
-        const results = []
-        docs.each(function (err, doc) {
-            if (err) console.log('Error', err);
-
-
-            console.log(doc);
-
-            if (doc) {
-                results.push(doc)
-            }
-            else {
-                res.send(results);
-            }
-        });
-    })
-})
-
-app.put('/api/update-color', (req, res) => {
-    const { product, newColor } = req.body;
-    console.log(product);
-    console.log(newColor)
-    console.log(product._id)
-    const id = new ObjectID(product._id);
-    //find the specific product and update it
-    const myQuery = { _id: id };
-
-    const newValues = { $set: { color: newColor } };
-
-    db.collection("products").updateOne(myQuery, newValues, function (err, res) {
-        if (err) console.log(err);
-        console.log("1 document updated");
-
-    });
-
-    res.send({ success: true })
-})
 
 
 const port = process.env.PORT || 3000;
-app.listen(port, ()=>console.log('server listen on port ', port))
+app.listen(port, () => console.log('server listen on port ', port))
