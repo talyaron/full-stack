@@ -1,0 +1,21 @@
+.newsPaper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:10px;
+    grid-template-areas:
+    "main main main"
+    "secondery a a"
+    "secondery a a";
+}
+
+.main{
+    grid-area: main;
+}
+
+.secondery{
+    grid-area: secondery;
+}
+
+.item>img{
+    width: 100%;
+}

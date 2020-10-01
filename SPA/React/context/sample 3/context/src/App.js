@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,createContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,13 +6,16 @@ import {
   Link
 } from "react-router-dom";
 
+
+export const UserContext = createContext(null)
+
 //pages
 import Users from './pages/users';
 import Home from './pages/home';
 import About from './pages/about';
 
 //context
-import { UserContext } from './user';
+// import { UserContext } from './user';
 
 
 
@@ -26,7 +29,7 @@ export default function App() {
     window.DB.collection('test').doc('test1')
       .onSnapshot(docDB => {
         console.log(docDB.data().text);
-        setName(docDB.data().text);
+        setName(   docDB.data().text);
       })
   }, [])
 
