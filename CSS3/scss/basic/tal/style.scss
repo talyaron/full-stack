@@ -1,0 +1,38 @@
+// https://sass-lang.com/guide
+
+@use 'round';
+@use 'rect';
+
+@mixin rotate($degrees) {
+    transform: rotate($degrees);
+}
+
+%borders{
+    border:7px solid black;
+}
+
+$dark-color: teal;
+$light-color:#bbb;
+
+body {
+    color: antiquewhite;
+    background-color: $dark-color;
+    font-size: 1rem;
+
+}
+
+.item {
+    @extend %borders;
+    background-color: $light-color;
+    width: 400px;
+    height: 200px;
+
+  
+
+    img {
+        width: 200px;
+    }
+
+    @include rotate(15deg);
+}
+

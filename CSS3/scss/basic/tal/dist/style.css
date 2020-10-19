@@ -1,0 +1,30 @@
+.item2 {
+  background-color: yellowgreen;
+}
+.item2--round {
+  border-radius: 10px;
+}
+
+.item3 {
+  background-color: tomato;
+}
+
+.item {
+  border: 7px solid black;
+}
+
+body {
+  color: antiquewhite;
+  background-color: teal;
+  font-size: 1rem;
+}
+
+.item {
+  background-color: #bbb;
+  width: 400px;
+  height: 200px;
+  transform: rotate(15deg);
+}
+.item img {
+  width: 200px;
+}
