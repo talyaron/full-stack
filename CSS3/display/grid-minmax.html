@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 1.5rem;
+        background-color: wheat;
+        transition: all 300ms;
+    }
+    .item{
+        background-color: steelblue;
+        color: white;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="item">a</div>
+        <div class="item">b</div>
+        <div class="item">c</div>
+        <div class="item">b</div>
+        <div class="item">c</div>
+      
+    </div>
+</body>
+
+</html>
