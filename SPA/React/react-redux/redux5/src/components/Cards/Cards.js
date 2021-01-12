@@ -8,8 +8,9 @@ const Cards = () => {
 
     const dispatch = useDispatch();
 
-    const todos = useSelector(state => state.todos.byIds)
-    const todosAll = useSelector(state => state.todos.allIds)
+    const todos = useSelector(state => state.todos.todos)
+    console.log(todos)
+    
 
     function handleToggle(id) {
         console.log(id)
@@ -20,12 +21,12 @@ const Cards = () => {
     return (
         <div className='cards'>
             {
-                todosAll.map((taskId, index) => {
+                todos.map((task, index) => {
                     return (<p key={index}
-                        onClick={() => handleToggle(taskId)}
-                        className={todos[taskId].completed ? 'completed' : ''}
+                        onClick={() => handleToggle(task.id)}
+                        className={task.completed ? 'completed' : ''}
                     >
-                        {todos[taskId].content}
+                        {task.content}
                     </p>)
                 })
             }
