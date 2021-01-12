@@ -8,7 +8,7 @@ const todoReducers = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO: {
       const { id, content } = action.payload;
-      return [...state, { id, content, completed: false }]
+      return [...state, todos:{ id, content, completed: false }]
 
     };
 
