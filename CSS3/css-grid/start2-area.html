@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <style>
-   
-.container{
-    display: grid;
-    grid-template-columns: repeat(1,1fr);
-    grid-template-rows: repeat(24, 10vh);
-    gap:5px;
-    width: 100%;
-}
+    .container{
+        display: grid;
+        grid-template-columns: repeat(3, 20vw);
+        grid-template-rows: auto;
+        gap:5px;
 
-.item{
-    background-color: purple;
-}
-    
+        grid-template-areas: 
+        'dddd header header'
+        '. main main ' 
+        '. . . '
+        '. . . '
+        '. . . '
+        '. . . '
+        '. . . '    
+        ;
+    }
+    .item{
+        background-color: purple;
+        height: 12vh;
+    }
+    .moshe{
+        grid-area: dddddd;
+        background-color: salmon;
+    }
+
+    .main{
+        grid-area: main;
+        background-color: rgb(135, 46, 36);
+    }
 </style>
-
 <body>
     <div class="container">
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
+        <div class="item moshe"></div>
+        <div class="item main"></div>
         <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
@@ -51,5 +58,4 @@
         <div class="item"></div>
     </div>
 </body>
-
 </html>

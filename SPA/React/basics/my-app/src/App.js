@@ -9,7 +9,7 @@ class Welcome extends React.Component {
   render() {
     return (
       <div className='wow'>
-        <p key={this.props.key}>Hello {this.props.name} {this.props.last}</p>
+        
       </div>
     )
   }
