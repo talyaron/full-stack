@@ -32,11 +32,6 @@ function App() {
     setTaskTxt(e.target.value)
   }
 
-
-
-  
-
-
   return (
     <div className="App">
       <form onSubmit={handleAdd}>

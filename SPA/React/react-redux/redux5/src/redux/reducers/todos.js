@@ -1,27 +1,42 @@
-import { ADD_TODO, TOGGLE_TODO } from "../actionTypes";
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from "../actionTypes";
 
 const initialState = {
-  todos:[]
+  todos: []
 };
 
 const todoReducers = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO: {
       const { id, content } = action.payload;
-      return {...state, [...state.todos, { id, content, completed: false }]}
+      return {
+        ...state,
+        todos: [...state.todos, { id, content, completed: false }]
+      }
 
     };
 
     case TOGGLE_TODO: {
       const { id } = action.payload;
 
-      return state.todos.map((task, i) => {
-        console.log(task)
-        if (task.id === id) {
-          task.completed = !task.completed;
-        }
-        return [...state, state[i].completed];
-      })
+      let newState = { ...state }
+      let index = newState.todos.findIndex(task => task.id === id)
+      if (index > -1) {
+        newState.todos[index].completed = !newState.todos[index].completed
+      }
+      return newState
+
+    };
+
+    case REMOVE_TODO: {
+      const { id } = action.payload;
+
+      let newState = { ...state }
+      let index = newState.todos.findIndex(task => task.id === id)
+      if (index > -1) {
+        newState.todos.splice(index, 1)
+      }
+
+      return newState;
     };
 
 
