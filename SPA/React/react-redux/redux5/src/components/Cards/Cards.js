@@ -2,30 +2,32 @@ import React from 'react';
 import './Cards.css';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { toggleTodo } from '../../redux/actions'
+import { toggleTodo, removeTodo } from '../../redux/actions'
 
 const Cards = () => {
 
     const dispatch = useDispatch();
-
-    const todos = useSelector(state => state.todos.byIds)
-    const todosAll = useSelector(state => state.todos.allIds)
+    const todos = useSelector(state => state.todos.todos)
 
     function handleToggle(id) {
-        console.log(id)
+
         dispatch(toggleTodo(id))
     }
 
-  
+    function handleDelete(id) {
+        dispatch(removeTodo(id))
+    }
+
     return (
         <div className='cards'>
             {
-                todosAll.map((taskId, index) => {
+                todos.map((task, index) => {
                     return (<p key={index}
-                        onClick={() => handleToggle(taskId)}
-                        className={todos[taskId].completed ? 'completed' : ''}
+                        onClick={() => handleToggle(task.id)}
+                        className={task.completed ? 'completed' : ''}
                     >
-                        {todos[taskId].content}
+                        {task.content}
+                        <button onClick={() => handleDelete(task.id)}>X</button>
                     </p>)
                 })
             }
