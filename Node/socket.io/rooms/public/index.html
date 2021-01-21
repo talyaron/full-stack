@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Socket.IO chat</title>
+    <style>
+        body {
+            margin: 0;
+            padding-bottom: 3rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        #form {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 0.25rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+
+        #input {
+            border: none;
+            padding: 0 1rem;
+            flex-grow: 1;
+            border-radius: 2rem;
+            margin: 0.25rem;
+        }
+
+        #input:focus {
+            outline: none;
+        }
+
+        #form>button {
+            background: #333;
+            border: none;
+            padding: 0 1rem;
+            margin: 0.25rem;
+            border-radius: 3px;
+            outline: none;
+            color: #fff;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #messages>li {
+            padding: 0.5rem 1rem;
+        }
+
+        #messages>li:nth-child(odd) {
+            background: #efefef;
+        }
+
+        .page {
+            width: 100vw;
+            height: 90vh;
+            display: grid;
+            grid-template-columns: 120px auto;
+        }
+
+        .rooms {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .room {
+            background-color: burlywood;
+            border-radius: 12px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.479);
+            display: flex;
+            align-items: center;
+            text-align: center;
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .chat {
+            overflow-y: auto;
+          
+        
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="rooms">
+            <a href='room1.html'><div class="room">Room 1</div></a>
+            <div class="room">Main</div>
+        </div>
+        <div class="chat">
+            <ul id="messages"></ul>
+            <form id="form" action="">
+                <input id="input" autocomplete="off" /><button>Send</button>
+            </form>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        let userRoomId = false;
+
+
+        const messages = document.getElementById('messages');
+        const form = document.getElementById('form');
+        const input = document.getElementById('input');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (input.value) {
+                
+                // if(userRoomId !== false){
+                //     socket.to(userRoomId).emit(input.value)
+                // } else {
+                    socket.emit('chat message', input.value);
+                // }
+                input.value = '';
+            }
+        });
+
+
+        socket.on('chat message', function (msg) {
+
+            const item = document.createElement('li');
+            item.textContent = msg;
+            messages.appendChild(item);
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+
+     
+        function joinRoom(roomId){
+            socket.emit('join room',roomId)
+            userRoomId = roomId
+        }
+    </script>
+</body>
+
+</html>
