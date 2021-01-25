@@ -120,11 +120,8 @@
             e.preventDefault();
             if (input.value) {
                 
-                // if(userRoomId !== false){
-                //     socket.to(userRoomId).emit(input.value)
-                // } else {
                     socket.emit('chat message', input.value);
-                // }
+            
                 input.value = '';
             }
         });
@@ -139,10 +136,10 @@
         });
 
      
-        function joinRoom(roomId){
-            socket.emit('join room',roomId)
-            userRoomId = roomId
-        }
+        // function joinRoom(roomId){
+        //     socket.emit('join room',roomId)
+        //     userRoomId = roomId
+        // }
     </script>
 </body>
 

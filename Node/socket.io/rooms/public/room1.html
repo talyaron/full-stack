@@ -115,7 +115,7 @@
 
         socket.on('connect', function () {
             // Connected, let's sign-up for to receive messages for this room
-            socket.emit('room', roomId);
+            socket.emit('join room', roomId);
         });
 
         socket.on('message', function (data) {
@@ -138,7 +138,7 @@
         });
 
 
-        socket.on('chat room message', function (msg) {
+        socket.on('chat room message',  msg=> {
 
             const item = document.createElement('li');
             item.textContent = msg;

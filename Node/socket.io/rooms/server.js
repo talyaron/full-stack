@@ -21,15 +21,15 @@ io.on('connection', socket => {
         console.log('user disconnected');
     });
 
-    socket.on('join room', roomId => {
-        console.log('roomId', roomId)
-        socket.join(roomId);
+    // socket.on('join room', roomId => {
+    //     console.log('roomId', roomId)
+    //     socket.join(roomId);
 
-    })
+    // })
     // rooms
 
-    socket.on('room', roomId => {
-        socket.join(roomId);
+    socket.on('join room', roomId => {
+        socket.join(roomId); //the client is now in that room
     })
 
     socket.on(`chat room message`, msgObj => {
