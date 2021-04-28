@@ -5,7 +5,12 @@ import './App.css';
 //schema
 import Person from './model/Person';
 
-const App = () => {
+
+//components
+import Card from './view/Card/Card';
+
+
+const App: React.FC  = () => {
 
   useEffect(()=>{
     console.log(greeter('Rony'));
@@ -25,7 +30,7 @@ const App = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          <Card age={34} name='moshe'/>
         </a>
       </header>
     </div>

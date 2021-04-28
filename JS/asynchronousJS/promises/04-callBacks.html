@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getJoke() {
+            fetch('https://v2.jokeapi.dev/joke/Programming')
+                .then(r => r.json())
+                .then(({ joke }) => {
+                    console.log(joke);
+                    function sayAJoke() {
+                        fetch('https://api.chucknorris.io/jokes/random')
+                            .then(r => r.json())
+                            .then(({ value }) => console.log(value))
+                    }
+
+                })
+        }
+
+
+
+        getJoke();
+
+
+        let newJoke = new Promise((resolve, reject) => {
+            fetch('https://api.chucknorris.io/jokes/random')
+                .then(r => r.json())
+                .then(({ value }) => {
+                    resolve(value);
+                })
+        })
+
+        console.log(newJoke);
+
+        newJoke.then(joke=>{
+            console.log(joke)
+        })
+
+        async function runAJOKE(){
+            const j = await newJoke;
+
+            
+        }
+
+       console.log( runAJOKE());
+
+
+    </script>
+</body>
+
+</html>

@@ -12,7 +12,7 @@ export const addTodo = content => ({
 
 export const toggleTodo = id => ({
   type: TOGGLE_TODO,
-  payload: { id }
+  payload: { id}
 });
 
 export const removeTodo = id => ({

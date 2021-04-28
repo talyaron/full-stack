@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <input type="number" name="" id="userId">
+    <button onclick='handleGetUser(event)'>Get user</button>
+    <script>
+        async function getHobbies() {
+            const { data } = await axios.get('/getHobbies')
+            console.log(data)
+        }
+
+        getHobbies();
+
+        function handleGetUser() {
+            try {
+                const userId = document.querySelector('#userId').valueAsNumber;
+                if (!userId) throw new Error('no user was eneterd')
+                console.log(userId)
+                axios.get(`/userHobbies/?user=${userId}`).then(({ data }) => console.log(data)).catch(e=>console.error(e))
+               
+                document.querySelector('#userId').value = ''
+            } catch (e) {
+                console.error(e)
+            }
+        }
+    </script>
+</body>
+
+</html>
