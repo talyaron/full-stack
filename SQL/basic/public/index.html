@@ -12,13 +12,23 @@
 <body>
     <input type="number" name="" id="userId">
     <button onclick='handleGetUser(event)'>Get user</button>
+    <br>
+    <button onclick='handleGetStudents(event)'>Get sudents</button>
+    <br>
+    <form onsubmit='handleSubmit(event)'>
+        <input type=text placeholder='first name' name='first_name' />
+        <input type=text placeholder='last name' name='last_name' />
+        <input type=email placeholder='email' name='email' />
+        <input type=text placeholder='description' name='description' />
+        <input type='submit' value="send" />
+    </form>
     <script>
         async function getHobbies() {
             const { data } = await axios.get('/getHobbies')
             console.log(data)
         }
 
-        getHobbies();
+        // getHobbies();
 
         function handleGetUser() {
             try {
@@ -31,6 +41,35 @@
             } catch (e) {
                 console.error(e)
             }
+        }
+
+        function handleGetStudents(e){
+            try{
+                axios.get('/getStudents').then(d=>console.log(d)).catch(e=>console.error(e))
+            }catch(e){
+                console.error(e)
+            }
+        }
+
+        function handleSubmit(e){
+            e.preventDefault();
+
+            const first_name = e.target.children.first_name.value;
+            const last_name = e.target.children.last_name.value;
+            const email = e.target.children.email.value;
+            const description = e.target.children.description.value;
+            
+            try{
+                axios.post('/addStudent',{
+                    first_name,
+                    last_name,
+                    email,
+                    description
+                }).then(d=>console.log(d)).catch(e=>console.error(e))
+            }catch(e){
+                console.error(e)
+            }
+            
         }
     </script>
 </body>

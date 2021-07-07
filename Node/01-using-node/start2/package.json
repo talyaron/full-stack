@@ -11,7 +11,7 @@
   "author": "Tal Yaron",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "string": "^3.3.3"
   }
 }

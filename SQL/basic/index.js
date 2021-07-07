@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+app.use(express.json());
+
 const mysql = require('mysql');
 
 
@@ -40,6 +42,47 @@ app.get('/getHobbies', (req, res) => {
     } catch (e) {
         res.send('Error', e.message)
     }
+})
+
+app.get('/getStudents', (req, res)=>{
+    try{
+        const query = 'select * from students;';
+        con.query(query, (err, result, fields)=>{
+            if(err) throw err;
+
+            res.status(200).send(result)
+        })
+    } catch(e){
+        console.log(e)
+        res.status(400).send({error:e});
+    }
+
+})
+
+
+app.post('/addStudent', (req, res)=>{
+    try{
+
+    const {first_name,
+        last_name,
+        email,
+        description} = req.body;
+
+
+    const query = `insert into students (first_name, last_name, email, description) values ("${first_name}", "${last_name}", "${email}", "${description}")`;
+
+    con.query(query, (err, result, fields)=>{
+        if(err) throw err;
+
+        res.status(200).send(result)
+    })
+
+   
+    } catch(e){
+        console.error(e)
+        res.status(400).send({ok:false, error:e})
+    }
+
 })
 
 app.get('/userHobbies', (req, res) => {
