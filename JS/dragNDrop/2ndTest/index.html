@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: bisque;
+    }
+    .dropZone{
+        width: 200px;
+        height: 200px;
+        background-color: aliceblue;
+    }
+</style>
+<body>
+    <div class="box" id='Source' draggable="true" ondragstart="dragstart_handler(event)">
+        Source
+    </div>
+    <div class="dropZone" ondrop="drop_handler(event)" ondragover="dragover_handler(event)" ondragleave="dragleave_handler(event)">
+        Drop here
+    </div>
+    <script src="./dist/index.min.js"></script>
+</body>
+</html>

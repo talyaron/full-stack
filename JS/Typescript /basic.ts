@@ -7,6 +7,7 @@ interface User {
 }
 type Users = Array<User>
 
+
 const users: Users = [{
     name: 'Guy',
     lastName: 'John',

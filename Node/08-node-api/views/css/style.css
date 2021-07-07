@@ -1,0 +1,26 @@
+body {
+  color: navy;
+}
+header {
+  background: #303f9f;
+  color: white;
+  text-align: center;
+  align-items: center;
+  font-size: 4rem;
+  vertical-align: middle;
+  margin-bottom: 30px;
+  padding: 55px;
+}
+
+.average{
+  padding: 20px 0px;
+  display: flex;
+}
+#avgOutput{
+  font-size: 1.6rem;
+    margin-left: 20px;
+}
+
+.btn{
+  text-transform: uppercase;
+}

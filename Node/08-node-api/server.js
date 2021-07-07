@@ -6,16 +6,15 @@ const bodyParser = require('body-parser');
 
 app.use(express.static('public'));
 
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: true
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
 }));
-
 const routes = require('./routes/index');
 app.use('/', routes);
 
 app.get('/api', (req, res) => {
-    MongoClient.connect(url, { useNewUrlParser: true,useUnifiedTopology: true}, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) throw err;
         var dbo = db.db("sampleDB");
 
@@ -32,4 +31,4 @@ app.get('/api', (req, res) => {
     });
 })
 
-app.listen(port, () => console.log(`server listening on port ${port}`))
+app.listen(port, () => console.log(`server listening on port ${port}!`))
