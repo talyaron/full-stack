@@ -25,7 +25,7 @@ function App(props) {
 
     })
 
-    fetch("http://localhost:4000/messages")
+    fetch("/messages")
       .then(response => {
         return response.json();
       })
