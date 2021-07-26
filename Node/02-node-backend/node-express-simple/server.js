@@ -10,5 +10,5 @@ app.get('/', (req, res) => {
 let port = process.env.PORT || 3000;
 
 app.listen(port, function () {
-    console.log('Server lsten on port', port)
+    console.log('Server listen on port', port)
 })
