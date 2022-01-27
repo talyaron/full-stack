@@ -4,7 +4,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 let sync = 1, async =1;
-app.use(express.static('public'))
+
+app.use(express.static('public'));
 
 app.get('/getImage', (req, res) => {
     try {

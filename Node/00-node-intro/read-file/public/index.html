@@ -12,30 +12,39 @@
 </head>
 
 <body>
-    <img id="root" />
+    <img src='image.jpeg' />
     <script>
 
-        for (let i = 0; i < 3; i++) {
-            console.time('imgSync-'+i)
-            axios('/getImage').then(({ data }) => {
+        async function readData(i) {
 
+            console.time('imgSync-' + i)
+            let { data } = await axios('/getImage');
+            console.timeEnd('imgSync-' + i);
 
-                // console.dir(data);
-                console.timeEnd('imgSync-'+i)
-            });
+            console.time('imgASync-' + i)
+            await axios('/getImageAsync');
+            console.timeEnd('imgASync-' + i);
 
-            console.time('imgASync-'+i)
-            axios('/getImageAsync').then(({ data }) => {
-                // console.dir(data);
-                console.timeEnd('imgASync-'+i)
-            })
+            console.time('text' + i)
+            await axios('/text');
+            console.timeEnd('text' + i);
+
+            return;
+
         }
+
+        async function run(){
+            await readData(1);
+            await readData(2);
+            await readData(3);
+        }
+
+        run();
+        
+
        
-        console.time('text')
-        axios('/text').then(({ data }) => {
-            // console.dir(data);
-            console.timeEnd('text')
-        })
+
+
     </script>
 </body>
 
