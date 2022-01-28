@@ -24,10 +24,14 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage((payload) => {
     console.log('[firebase-messaging-sw.js] Received background message ', payload);
     // Customize notification here
-    const notificationTitle = 'Background Message Title';
+const {data} = payload;
+const {score, time, teams, logoSrc} = data;
+
+    const notificationTitle = 'Match update';
     const notificationOptions = {
-      body: 'Background Message body.',
-      icon: '/firebase-logo.png'
+
+      body: `${teams} score: ${score}, at ${time}`,
+      icon: `${logoSrc}`
     };
   
     self.registration.showNotification(notificationTitle,

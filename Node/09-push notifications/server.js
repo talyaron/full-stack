@@ -7,7 +7,7 @@ const { getMessaging } = require("firebase-admin/messaging");
 var admin = require("firebase-admin");
 const { getAuth } = require("firebase-admin/auth");
 
-const serviceAccount = require('./serviceAccout.json');
+const serviceAccount = require("./serviceAccout.json");
 
 initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -45,8 +45,11 @@ app.post("/push", (req, res) => {
 
   const message = {
     data: {
-      score: "850",
+      teams: "TLV vs BSL",
+      score: "12:21",
       time: "2:45",
+      logoSrc:
+        "https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/MaccabiTAOLD.jpg/200px-MaccabiTAOLD.jpg",
     },
     token: tokenRecived,
   };
