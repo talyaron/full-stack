@@ -31,6 +31,7 @@ export function register(config) {
 
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+      const fbswUrl = `${process.env.PUBLIC_URL}/firebase-messaging-sw.js`;
 
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
@@ -47,6 +48,7 @@ export function register(config) {
       } else {
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
+        registerValidSW(fbswUrl, config);
       }
     });
   }

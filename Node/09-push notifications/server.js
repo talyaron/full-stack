@@ -1,16 +1,28 @@
 //Express
-const express = require('express');
+const express = require("express");
+require("dotenv").config();
+const axios = require("axios");
+const { initializeApp } = require("firebase-admin/app");
+const { getMessaging } = require("firebase-admin/messaging");
+var admin = require("firebase-admin");
+const { getAuth } = require("firebase-admin/auth");
 
-//web-push
-const webpush = require('web-push');
+const serviceAccount = require('./serviceAccout.json');
+
+initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://delib21-aaeb0.firebaseio.com",
+});
+getMessaging();
 
 //body-parser
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 //path
-const path = require('path');
+const path = require("path");
+const { constants } = require("buffer");
 
-//using express 
+//using express
 const app = express();
 
 //using bodyparser
@@ -18,28 +30,55 @@ app.use(bodyParser.json());
 
 const port = process.env.PORT || 4000;
 
-//storing the keys in variables
-const publicVapidKey = 'BL1gIHBN3kYTGItGf9US4wdDSZLYnLpfMePTTWCHVu2Sc4VTDVC-zAcuvzLyZjU6vkf43uIe5Oa4ZiYwBSCGvX8';
-const privateVapidKey = 'wxmv2e978XyygFYTB0Y_MMX3vUtfWRaoqDPj7QfVI30';
-
-
-app.use(express.static('client/build'))
+app.use(express.static("client/build"));
+let tokenRecived = "";
 
 //subscribe route
-app.post('/subscribe', (req, res)=>{
-    //get push subscription object from the request
-    const subscription = req.body;
+app.post("/subsscribeToMessages", (req, res) => {
+  const { token } = req.body;
+  console.log(token);
+  tokenRecived = token;
+  res.send({ token });
+});
+app.post("/push", (req, res) => {
+  console.log("asked to push to ", tokenRecived);
 
-    //send status 201 for the request
-    res.status(201).json({})
+  const message = {
+    data: {
+      score: "850",
+      time: "2:45",
+    },
+    token: tokenRecived,
+  };
 
-    //create paylod: specified the detals of the push notification
-    const payload = JSON.stringify({title: 'Section.io Push Notification' });
+  // Send a message to the device corresponding to the provided
+  // registration token.
+  getMessaging()
+    .send(message)
+    .then((response) => {
+      // Response is a message ID string.
+      console.log("Successfully sent message:", response);
+    })
+    .catch((error) => {
+      console.log("Error sending message:", error);
+    });
 
-    //pass the object into sendNotification fucntion and catch any error
-    webpush.sendNotification(subscription, payload).catch(err=> console.error(err));
-})
+  res.send("try to send");
+});
 
-app.listen(port, ()=>{
-    console.log(`Server listen on port: ${port}`)
-})
+//uses delib-community to send push notifications
+const config = {
+  headers: {
+    key: "Authorization: Bearer ya29.ElqKBGN2Ri_Uz...HnS_uNreA",
+  },
+};
+const key = "Authorization: Bearer ya29.ElqKBGN2Ri_Uz...HnS_uNreA";
+function sendPushNotifications() {
+  axios.post(
+    "https://fcm.googleapis.com/v1/projects/delib21-aaeb0/messages:send"
+  );
+}
+
+app.listen(port, () => {
+  console.log(`Server listen on port: ${port}`);
+});

@@ -1,17 +1,27 @@
 import React, { useEffect } from "react";
+import axios from 'axios';
 import logo from "./logo.svg";
 import "./App.css";
 
-import {send} from './controlers/helpers'
+import { getMessaging, onMessage } from "firebase/messaging";
 
+import {send} from './controlers/helpers';
+import {registerToMessages} from './controlers/firebase/config';
 
+registerToMessages();
+
+const messaging = getMessaging();
+onMessage(messaging, (payload) => {
+  console.log('Message received. ', payload);
+  // ...
+});
 
 function App() {
-  useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      send().catch((err) => console.error(err));
-    }
-  }, []);
+  
+  async function handleSendPush(){
+    const response = await axios.post('/push',{});
+    console.log(response)
+  }
 
   return (
     <div className="App">
@@ -27,7 +37,9 @@ function App() {
           rel="noopener noreferrer">
           Based on Mercy Meave's post
         </a>
+        <button onClick={handleSendPush}>Send</button>
       </header>
+     
     </div>
   );
 }
