@@ -36,20 +36,38 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 function getRandomErrorOrNumber() {
     return __awaiter(this, void 0, Promise, function () {
-        var number;
         return __generator(this, function (_a) {
-            number = Math.floor(Math.random() * 100);
-            if (number < 80)
-                throw new Error("Not enough!");
-            return [2 /*return*/, number];
+            try {
+                return [2 /*return*/, new Promise(function (resove, reject) {
+                        setTimeout(function () {
+                            try {
+                                var number = Math.floor(Math.random() * 100);
+                                if (number < 80)
+                                    throw new Error("Not enough!");
+                                resove(number);
+                            }
+                            catch (error) {
+                                console.log("########");
+                                console.error(error);
+                                reject(error.message);
+                            }
+                        }, 1000);
+                    })];
+            }
+            catch (error) {
+                console.log("-----------");
+                console.error(error);
+            }
+            return [2 /*return*/];
         });
     });
 }
 getRandomErrorOrNumber()
     .then(function (res) {
+    console.log(res);
     if (res)
         console.log(res);
-})["catch"](function (err) { return console.error(err); });
+})["catch"](function (err) { return console.error('then:', err); });
 function main() {
     return __awaiter(this, void 0, void 0, function () {
         var res, error_1;
@@ -60,13 +78,14 @@ function main() {
                     return [4 /*yield*/, getRandomErrorOrNumber()];
                 case 1:
                     res = _a.sent();
+                    console.log(res);
                     if (res) {
                         console.log(res);
                     }
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
-                    console.error(error_1);
+                    console.error('catch:', error_1);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
