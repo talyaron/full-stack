@@ -35,5 +35,5 @@ const {score, time, teams, logoSrc} = data;
     };
   
     self.registration.showNotification(notificationTitle,
-      notificationOptions);
+      notificationOptions)
   });
