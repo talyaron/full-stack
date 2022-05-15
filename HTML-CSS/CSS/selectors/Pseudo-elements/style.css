@@ -1,0 +1,23 @@
+p::after {
+  content: 'Go go go';
+  background-color: yellow;
+  color: red;
+  font-weight: bold;
+}
+
+p::before {
+  content: 'start and ';
+  background-color: rgb(255, 38, 0);
+  color: rgb(233, 253, 46);
+  font-weight: bold;
+}
+
+p::first-line {
+  color: #066b85;
+  font-variant: small-caps;
+}
+
+p::first-letter {
+    color: #2f00ff;
+    font-size: xx-large;
+  }

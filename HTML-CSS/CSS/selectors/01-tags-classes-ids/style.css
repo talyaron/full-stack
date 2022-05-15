@@ -1,0 +1,18 @@
+h1{
+    color:navy;
+}
+h2{
+    font-style: italic;
+    color:blue
+}
+
+body{
+    background-color: rgb(240, 240, 240);
+}
+
+.summery{
+    color: rgba(0, 0, 0, 0.589);
+    font-size: large;
+}
+
+

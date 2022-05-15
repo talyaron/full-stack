@@ -1,0 +1,28 @@
+.wrapper{
+    width: 75ch;
+    margin: auto;
+    padding:20px;
+}
+
+.article{
+    border: 1px solid gray;
+}
+
+.article img{
+    width: 100%;
+}
+
+.article p span{
+    background-color: lightblue;
+    padding: 2px;
+}
+
+/* .wrapper > p:nth-child(even){
+    background-color: rgba(128, 128, 128, 0.39);
+}
+.wrapper > p:nth-child(odd){
+    background-color: rgba(48, 40, 158, 0.315);
+} */
+p:first-child{
+    background-color: rgb(105, 251, 105);
+}
