@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get Image</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
+        integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <img src='image.jpeg' />
+    <script>
+
+        async function readData(i) {
+
+            console.time('imgSync-' + i)
+            let { data } = await axios('/getImage');
+            console.timeEnd('imgSync-' + i);
+
+            console.time('imgASync-' + i)
+            await axios('/getImageAsync');
+            console.timeEnd('imgASync-' + i);
+
+            console.time('text' + i)
+            await axios('/text');
+            console.timeEnd('text' + i);
+
+            return;
+
+        }
+
+        async function run(){
+            await readData(1);
+            await readData(2);
+            await readData(3);
+        }
+
+        run();
+        
+
+       
+
+
+    </script>
+</body>
+
+</html>
