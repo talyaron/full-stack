@@ -1,0 +1,26 @@
+.mega-wrapper {
+  position: relative;
+  border: 1px dashed green;
+  width: 200px;
+  margin: auto;
+}
+.wrapper {
+  border: 1px solid gray;
+  background-color: wheat;
+  width: fit-content;
+  margin: auto;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(83, 221, 221);
+  border: 1px solid green;
+}
+
+.sticky {
+  position: sticky;
+  bottom: 0px;
+  background-color: rgb(251, 206, 5);  
+}
+
+
