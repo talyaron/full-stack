@@ -18,7 +18,7 @@
   "homepage": "https://gitlab.com/talyaron/gynisus-node#readme",
   "dependencies": {
     "cookie-parser": "^1.4.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-ip": "^1.0.3",
     "helmet": "^3.21.2",
     "jwt-simple": "^0.5.6",
